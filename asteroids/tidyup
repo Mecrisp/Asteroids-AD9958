@@ -1,0 +1,14 @@
+#!/bin/bash
+
+rm -f build/*
+rm -f obj_dir/*
+rm -f grafiklog.txt
+rm -f ddslog.txt
+rm -f frame-*.dat
+
+rm -f Zeichnungen/grafiklog.txt
+rm -f Zeichnungen/ddslog.txt
+
+cd max10
+./besenrein
+cd ..

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+./compilenucleus
+
+mkdir obj_dir
+rm -f obj_dir/*
+
+verilator --l2-name v -Wall --cc -DVERILATOR=1 max10/Kadinsky.v verilator/Takt10zu100.v verilator/fiftyfivenm_rublock.v verilator/ring_osc.v max10/uart-fifo.v max10/stack2.v max10/stack3.v max10/j1-universal-16kb-dualport.v --top-module Kadinsky --exe sim_main.cpp
+make -C obj_dir CXXFLAGS="-fPIC" OPT_FAST="-O2" -f VKadinsky.mk VKadinsky
+mv obj_dir/VKadinsky ./

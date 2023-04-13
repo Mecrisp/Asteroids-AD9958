@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo reset > "$1.plt"
+echo set encoding utf8 >> "$1.plt"
+echo set terminal png enhanced size 800, 800 >> "$1.plt"
+echo set xrange [69:81] >> "$1.plt"
+echo set yrange [69:81] >> "$1.plt"
+echo set output '"'$1.png'"' >> "$1.plt"
+echo plot '"'$1'"' u '($3 * 400/2**32):($4 * 400/2**32)' w lp pt 7 ps 0.8 notitle >> "$1.plt"
+
+gnuplot "$1.plt"

@@ -1,0 +1,8 @@
+
+Asteroids for AD9958
+
+This is an implementation of the classic Asteroids game, but for a very special hardware: A laser projector, with two acousto-optical deflectors driven by a dual-channel AD9958 direct digital synthesis chip, which in turn gets its data from an FPGA, running a modified copy of Mecrisp-Ice Forth.
+
+The logic and software contained in this repository is intended as a demo of the capabilities of the custom laser projector hardware, and you are unlikely to replicate the setup, which is very expensive. But as considerable effort went into this, it shall be available for everyone - maybe you want to drive the AD9958 yourself, or want to peek into a special snowflake of an Asteroids implementation in Forth for vector graphics hardware.
+
+The variant of Mecrisp-Ice used here has a special change in comparison to the vanilla one that is worth mentioning: To save on memory ports and therefore increase clock speed, it is not reading data from memory every clock cycle, but only when no write access is ongoing. Therefore, you cannot read data in the clock cycle directly after writing data, which would be the sequence ... ! @ ... in Forth. One usually does not construct this when programming in Forth, but keep this speciality in mind when using interrupts. If your handler finishes with ! ; you will get data corruption elsewhere. Insert a nop at the end of the interrupt handler to rectify the situation.

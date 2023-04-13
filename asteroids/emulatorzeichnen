@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rm -f Zeichnungen/*
+
+# cat $1 | ./VKadinsky > Zeichnungen/Simulationslog.txt
+
+mv grafiklog.txt Zeichnungen
+mv ddslog.txt Zeichnungen
+mv frame-*.dat Zeichnungen
+cp malermeister Zeichnungen
+cd Zeichnungen
+for i in *.dat; do ./malermeister "$i"; gnuplot "$i".plt; done
+cd ..

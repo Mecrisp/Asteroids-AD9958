@@ -1,0 +1,1636 @@
+
+\ -------------------------------------------------------------
+\  Register der Vektorgrafikeinheit
+\ -------------------------------------------------------------
+
+$0430 constant freq0low    \ WO
+$0440 constant freq0high   \ WO
+$0450 constant freq1low    \ WO
+$0460 constant freq1high   \ WO
+$0470 constant amplitude0  \ WO
+$0480 constant amplitude1  \ WO: Nebenwirkung beim Schreiben: Pixel in Puffer
+$0490 constant fifo-status \ RW: Nebenwirkung beim Schreiben: Overflow löschen
+$04A0 constant 2nd-update  \ RW: Ein weiterer Updatepuls
+
+\ -------------------------------------------------------------
+\  Intensitätskalibrationstabellen
+\ -------------------------------------------------------------
+
+create kalix
+369  ,
+366  ,
+364  ,
+359  ,
+356  ,
+353  ,
+349  ,
+347  ,
+343  ,
+340  ,
+336  ,
+334  ,
+330  ,
+328  ,
+327  ,
+323  ,
+321  ,
+318  ,
+316  ,
+314  ,
+312  ,
+309  ,
+308  ,
+305  ,
+304  ,
+300  ,
+299  ,
+297  ,
+296  ,
+294  ,
+292  ,
+291  ,
+290  ,
+289  ,
+285  ,
+284  ,
+283  ,
+281  ,
+281  ,
+280  ,
+278  ,
+278  ,
+277  ,
+276  ,
+276  ,
+275  ,
+273  ,
+273  ,
+273  ,
+272  ,
+271  ,
+270  ,
+270  ,
+268  ,
+268  ,
+268  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+269  ,
+269  ,
+269  ,
+270  ,
+270  ,
+272  ,
+272  ,
+272  ,
+273  ,
+273  ,
+274  ,
+276  ,
+276  ,
+277  ,
+277  ,
+278  ,
+280  ,
+280  ,
+281  ,
+283  ,
+283  ,
+284  ,
+285  ,
+286  ,
+287  ,
+288  ,
+289  ,
+290  ,
+291  ,
+292  ,
+292  ,
+293  ,
+294  ,
+294  ,
+295  ,
+296  ,
+297  ,
+298  ,
+298  ,
+299  ,
+299  ,
+302  ,
+303  ,
+304  ,
+305  ,
+306  ,
+306  ,
+307  ,
+308  ,
+310  ,
+311  ,
+311  ,
+311  ,
+312  ,
+313  ,
+314  ,
+314  ,
+315  ,
+316  ,
+317  ,
+317  ,
+317  ,
+318  ,
+318  ,
+319  ,
+319  ,
+321  ,
+320  ,
+322  ,
+324  ,
+323  ,
+325  ,
+326  ,
+326  ,
+326  ,
+326  ,
+327  ,
+327  ,
+328  ,
+328  ,
+328  ,
+327  ,
+328  ,
+329  ,
+329  ,
+329  ,
+328  ,
+328  ,
+328  ,
+327  ,
+327  ,
+327  ,
+327  ,
+327  ,
+327  ,
+326  ,
+326  ,
+326  ,
+325  ,
+325  ,
+324  ,
+323  ,
+322  ,
+321  ,
+320  ,
+321  ,
+320  ,
+319  ,
+318  ,
+317  ,
+316  ,
+315  ,
+315  ,
+315  ,
+314  ,
+312  ,
+311  ,
+310  ,
+310  ,
+308  ,
+307  ,
+306  ,
+304  ,
+303  ,
+302  ,
+301  ,
+300  ,
+300  ,
+298  ,
+297  ,
+297  ,
+296  ,
+295  ,
+294  ,
+293  ,
+293  ,
+291  ,
+291  ,
+290  ,
+288  ,
+287  ,
+287  ,
+288  ,
+288  ,
+286  ,
+286  ,
+286  ,
+284  ,
+284  ,
+284  ,
+283  ,
+283  ,
+284  ,
+283  ,
+284  ,
+284  ,
+285  ,
+286  ,
+286  ,
+287  ,
+288  ,
+288  ,
+289  ,
+290  ,
+292  ,
+293  ,
+295  ,
+296  ,
+298  ,
+299  ,
+302  ,
+304  ,
+306  ,
+309  ,
+312  ,
+314  ,
+317  ,
+321  ,
+325  ,
+330  ,
+336  ,
+345  ,
+354  ,
+364  ,
+375  ,
+383  ,
+396  ,
+
+kalix constant kalix
+
+create kaliy
+419  ,
+418  ,
+416  ,
+413  ,
+410  ,
+409  ,
+406  ,
+403  ,
+400  ,
+397  ,
+395  ,
+391  ,
+389  ,
+386  ,
+384  ,
+381  ,
+378  ,
+377  ,
+374  ,
+371  ,
+369  ,
+367  ,
+364  ,
+364  ,
+361  ,
+358  ,
+357  ,
+354  ,
+354  ,
+352  ,
+349  ,
+348  ,
+347  ,
+345  ,
+344  ,
+341  ,
+340  ,
+338  ,
+337  ,
+336  ,
+334  ,
+333  ,
+332  ,
+330  ,
+330  ,
+329  ,
+328  ,
+328  ,
+326  ,
+325  ,
+325  ,
+322  ,
+322  ,
+321  ,
+321  ,
+319  ,
+319  ,
+318  ,
+318  ,
+318  ,
+317  ,
+317  ,
+317  ,
+317  ,
+317  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+315  ,
+315  ,
+317  ,
+317  ,
+317  ,
+317  ,
+317  ,
+318  ,
+318  ,
+318  ,
+319  ,
+319  ,
+321  ,
+322  ,
+322  ,
+323  ,
+323  ,
+324  ,
+324  ,
+326  ,
+326  ,
+327  ,
+327  ,
+328  ,
+328  ,
+329  ,
+331  ,
+331  ,
+332  ,
+333  ,
+333  ,
+334  ,
+334  ,
+335  ,
+336  ,
+337  ,
+337  ,
+339  ,
+340  ,
+340  ,
+342  ,
+343  ,
+343  ,
+344  ,
+345  ,
+345  ,
+346  ,
+346  ,
+346  ,
+348  ,
+348  ,
+349  ,
+350  ,
+350  ,
+351  ,
+351  ,
+352  ,
+352  ,
+352  ,
+353  ,
+353  ,
+354  ,
+353  ,
+353  ,
+353  ,
+355  ,
+354  ,
+353  ,
+353  ,
+353  ,
+353  ,
+353  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+352  ,
+352  ,
+352  ,
+350  ,
+350  ,
+350  ,
+350  ,
+350  ,
+349  ,
+348  ,
+348  ,
+345  ,
+345  ,
+345  ,
+344  ,
+344  ,
+343  ,
+341  ,
+340  ,
+340  ,
+339  ,
+339  ,
+337  ,
+336  ,
+335  ,
+335  ,
+334  ,
+332  ,
+331  ,
+330  ,
+330  ,
+328  ,
+327  ,
+326  ,
+325  ,
+324  ,
+323  ,
+322  ,
+321  ,
+319  ,
+318  ,
+317  ,
+316  ,
+315  ,
+314  ,
+313  ,
+311  ,
+310  ,
+310  ,
+309  ,
+307  ,
+307  ,
+306  ,
+305  ,
+304  ,
+303  ,
+303  ,
+302  ,
+301  ,
+300  ,
+300  ,
+300  ,
+298  ,
+298  ,
+298  ,
+298  ,
+297  ,
+298  ,
+298  ,
+297  ,
+297  ,
+298  ,
+298  ,
+298  ,
+298  ,
+299  ,
+299  ,
+300  ,
+300  ,
+302  ,
+303  ,
+304  ,
+305  ,
+306  ,
+308  ,
+310  ,
+311  ,
+313  ,
+314  ,
+316  ,
+318  ,
+320  ,
+322  ,
+324  ,
+327  ,
+331  ,
+334  ,
+336  ,
+339  ,
+341  ,
+344  ,
+
+kaliy constant kaliy
+
+\ -------------------------------------------------------------
+\  Primitiven zur Anzeige von Pixeln
+\ -------------------------------------------------------------
+
+: full? ( -- ? ) fifo-status io@ 1 and 0<> ;
+: idle? ( -- ? ) fifo-status io@ 2 and 0<> ;
+
+: reset-underflow ( -- ) 0 fifo-status io! ;
+: underflow? ( -- ? ) fifo-status io@ 4 and 0<> ;
+
+  \ Bestimmung der Frequenzwerte:
+  \
+  \ Anfang des Bereiches:  70e6/400e6*2^32 =  751619276.80000
+  \ Ende   des Bereiches:  80e6/400e6*2^32 =  858993459.20000
+
+  \ Offset, um 70 MHz für Koordinate 0 zu erreichen: 751619277.
+
+  \ Möchte nun gerne den Skalierfaktor bestimmen, um bei maximaler Koordinate den Vollausschlag zu erreichen.
+  \ (858993459.20000 - 751619276.80000) / 32767 = 3276.9
+
+  \ Skalierung, um 80 MHz für Koordinate 32767 zu erreichen: 3277
+
+: kalibration ( -- )
+
+  751619277. $0230 ( freq-ch0-high ) io! $0220 ( freq-ch0-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.
+  751619277. $0250 ( freq-ch1-high ) io! $0240 ( freq-ch1-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.
+
+    0 2nd-update io! \ Keinen zusätzlichen Update-Puls, Position 0 fällt mit dem normalen Update-Puls zusammen.
+ \ 22 2nd-update io! \ Einen weiteren Updatepuls nachdem die X-Daten übertragen worden sind.
+;
+
+: putpixel ( x y -- ) \ Angepasst für einen Bereich von 0 bis 4095
+  4095 and
+  8 *
+  [ $6024 , ] \ "dup >r" in einem Opcode
+  3277 [ $7511 , ] freq1high io!  \ "2dup um* nip" in einem Opcode
+         *         freq1low  io!
+
+  4095 and
+  8 *
+  dup
+  3277 [ $7511 , ] freq0high io!
+         *         freq0low  io!
+
+  \ Trick: LSB der Adresse wird bei @ und ! ignoriert.
+
+          6 rshift kalix + @ amplitude0 ( io! ) [ $6B4F , ] \ "io! r>" in einem Opcode
+  ( r> )  6 rshift kaliy + @
+
+  \ Den Pixel eventuell mehrfach zeichnen, um Zeit fürs Rechnen zu gewinnen:
+
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 3.52 us
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 2.64 us
+  begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 1.76 us
+  begin fifo-status io@ 1 and while repeat     amplitude1 io! \ 0.88 us
+;
+
+: blanking ( -- )
+
+  0 freq1low  io!
+  0 freq1high io!
+
+  0 freq0low  io!
+  0 freq0high io!
+
+  0 amplitude0 io!
+
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+;
+
+\ -------------------------------------------------------------
+\  Bresenham line
+\ -------------------------------------------------------------
+
+0 variable line-sx   0 variable line-sy
+0 variable line-dx   0 variable line-dy
+
+4 constant distance
+
+: line ( x0 y0 x1 y1 -- )
+
+  distance rshift >r
+  distance rshift >r
+  distance rshift >r
+  distance rshift r> r> r>
+
+  >r swap >r ( x0 x1 R: y1 y0 )
+
+  >r dup r> -
+    dup 0 < not 1 or distance lshift  line-sx !
+  abs           line-dx !
+
+  ( x0 R: x1 x0 ) distance lshift
+
+  r> r> ( x0 y0 y1 )
+
+  >r dup r> -
+    dup 0 < not 1 or distance lshift  line-sy !
+  abs invert 1+ line-dy !
+
+  ( x0 y0 ) distance lshift
+
+  line-dx @ line-dy @
+  over over invert 1+ max >r ( x0 y0 dx dy R: steps )
+            +                ( x0 y0 err   R: steps )
+
+
+  begin
+    >r
+    over distance lshift over distance lshift putpixel
+    r>
+    r@
+  while
+    r> 1- >r
+
+    ( x y line-err R: steps )
+
+    ( dup 2* ) [ $6A11 , ]  >r
+    ( x y line-err R: steps 2*line-err )
+
+    line-dy @ dup r@ <  ( x y line-err dy flag R: steps 2*line-err )
+                        if + >r swap line-sx @ + swap r> else drop then
+    line-dx @ r> over < ( x y line-err dx flag R: steps 2*line-err )
+                        if + >r      line-sy @ +      r> else drop then
+  repeat
+
+  ( x y line-err R: steps )
+
+  ( drop rdrop ) [ $610F , ] \ "drop rdrop" in einem Opcode
+  2drop
+;
+
+\ -------------------------------------------------------------
+\  Asteroids
+\ -------------------------------------------------------------
+
+: cycles ( -- u ) ticks ;
+
+\ -------------------------------------------------------------
+\  Bresenham line
+\ -------------------------------------------------------------
+
+0 variable line-x1   0 variable line-y1
+0 variable line-sx   0 variable line-sy
+0 variable line-dx   0 variable line-dy
+0 variable line-err
+
+: line ( x0 y0 x1 y1 -- )
+
+  line-y1 ! line-x1 !
+
+  over line-x1 @ -   dup 0< if 1 else -1 then line-sx !   abs        line-dx !
+  dup  line-y1 @ -   dup 0< if 1 else -1 then line-sy !   abs negate line-dy !
+  line-dx @ line-dy @ + line-err !
+
+  begin
+    2dup putpixel
+    2dup line-x1 @ line-y1 @ d<>
+  while
+    line-err @ 2* >r
+    r@ line-dy @ > if line-dy @ line-err +! swap line-sx @ + swap then
+    r> line-dx @ < if line-dx @ line-err +!      line-sy @ +      then
+  repeat
+  2drop
+;
+
+\ -------------------------------------------------------------
+\  Primitives for drawing  Asteroids style
+\ -------------------------------------------------------------
+
+1 variable scale
+1 variable scale-x
+1 variable scale-y
+
+0 variable current-x  0 variable current-y
+
+: moveto ( x y -- ) current-y ! current-x ! ;
+: lineto ( x y -- ) current-x @ current-y @ 2over line moveto ;
+
+: moverel ( dx dy -- ) scale @ * scale-y @ * current-y +! scale @ * scale-x @ * current-x +! ;
+: linerel ( dx dy -- ) >r scale @ * scale-x @ * current-x @ + r> scale @ * scale-y @ * current-y @ + lineto ;
+
+\ -------------------------------------------------------------
+\  Graphics for Asteroids
+\ -------------------------------------------------------------
+
+
+\ -------------------------------------------------------------
+\   Schiffe und Schub
+\ -------------------------------------------------------------
+
+
+: asteroids-0A6E ( -- )
+   -24 4 *   -16 4 * moverel
+     0 4 *   32 4 * linerel
+   -16 4 *   16 4 * linerel
+   384  -128 linerel
+  -384  -128 linerel
+    16 4 *   16 4 * linerel
+;
+
+: asteroids-0AA2 ( -- )
+   -32  4 *   16 4 * linerel
+    32  4 *  16  4 * linerel
+;
+
+: asteroids-0AA8 ( -- )
+   -88   -72 moverel
+   -12   128 linerel
+   -68    56 linerel
+   396   -88 linerel
+  -368  -164 linerel
+    56    68 linerel
+;
+
+: asteroids-0AC2 ( -- )
+  -132    52 linerel
+   120    76 linerel
+;
+
+: asteroids-0ACC ( -- )
+   -80   -80 moverel
+   -24   124 linerel
+   -76    52 linerel
+   400   -52 linerel
+  -352  -200 linerel
+    52    76 linerel
+;
+
+: asteroids-0AE6 ( -- )
+  -140    36 linerel
+   112    88 linerel
+;
+
+: asteroids-0AF0 ( -- )
+   -72   -88 moverel
+   -36   124 linerel
+   -80    44 linerel
+   404   -12 linerel
+  -332  -232 linerel
+    44    80 linerel
+;
+
+: asteroids-0B0A ( -- )
+  -140    24 linerel
+   104   100 linerel
+;
+
+: asteroids-0B14 ( -- )
+   -16 4 *  -24  4 * moverel  \ *** Gekipptes Bit?
+   -48   120 linerel
+   -84    36 linerel
+   404    28 linerel
+  -304  -264 linerel
+    36    84 linerel
+;
+
+: asteroids-0B2C ( -- )
+  -144    12 linerel
+    92   108 linerel
+;
+
+: asteroids-0B36 ( -- )
+   -56  -100 moverel
+   -60   112 linerel
+   -88    28 linerel
+   400    68 linerel
+  -280  -292 linerel
+    28    88 linerel
+;
+
+: asteroids-0B50 ( -- )
+  -144    -4 linerel
+    84   116 linerel
+;
+
+: asteroids-0B5A ( -- )
+   -44  -108 moverel
+   -72   108 linerel
+   -88    16 linerel
+   392   108 linerel
+  -248  -320 linerel
+    16    88 linerel
+;
+
+: asteroids-0B74 ( -- )
+  -140   -16 linerel
+    72   124 linerel
+;
+
+: asteroids-0B7E ( -- )
+   -32  -112 moverel
+   -80   100 linerel
+   -92     8 linerel
+   380   144 linerel
+  -216  -344 linerel
+     8    92 linerel
+;
+
+: asteroids-0B98 ( -- )
+  -140   -32 linerel
+    60   132 linerel
+;
+
+: asteroids-0BA2 ( -- )
+   -24  -112 moverel
+   -92    92 linerel
+   -92     0 linerel
+   364   180 linerel
+  -180  -364 linerel
+     0    92 linerel
+;
+
+: asteroids-0BBC ( -- )
+  -136   -44 linerel
+    44   136 linerel
+;
+
+: asteroids-0BC6 ( -- )
+   -12  -116 moverel
+  -100    80 linerel
+   -92    -8 linerel
+   344   216 linerel
+  -144  -380 linerel
+    -8    92 linerel
+;
+
+: asteroids-0BE0 ( -- )
+  -132   -60 linerel
+    32   140 linerel
+;
+
+: asteroids-0BEA ( -- )
+     0  -116 moverel
+  -108    72 linerel
+   -88   -16 linerel
+   320   248 linerel
+  -108  -392 linerel
+   -16    88 linerel
+;
+
+: asteroids-0C04 ( -- )
+  -124   -72 linerel
+    16   140 linerel
+;
+
+: asteroids-0C0E ( -- )
+    12  -116 moverel
+  -112    60 linerel
+   -88   -28 linerel
+   292   280 linerel
+   -68  -400 linerel
+   -28    88 linerel
+;
+
+: asteroids-0C28 ( -- )
+  -116   -84 linerel
+     4   144 linerel
+;
+
+: asteroids-0C32 ( -- )
+    24  -112 moverel
+  -120    48 linerel
+   -84   -36 linerel
+   264   304 linerel
+   -28  -404 linerel
+   -36    84 linerel
+;
+
+: asteroids-0C4C ( -- )
+  -108   -92 linerel
+   -12   144 linerel
+;
+
+: asteroids-0C56 ( -- )
+    32  -112 moverel
+  -124    36 linerel
+   -80   -44 linerel
+   232   332 linerel
+    12  -404 linerel
+   -44    80 linerel
+;
+
+: asteroids-0C70 ( -- )
+  -100  -104 linerel
+   -24   140 linerel
+;
+
+: asteroids-0C7A ( -- )
+    44  -108 moverel
+  -124    24 linerel
+   -76   -52 linerel
+   200   352 linerel
+    52  -400 linerel
+   -52    76 linerel
+;
+
+: asteroids-0C94 ( -- )
+   -88  -112 linerel
+   -36   140 linerel
+;
+
+: asteroids-0C9E ( -- )
+    56  -100 moverel
+  -128    12 linerel
+   -68   -56 linerel
+   164   368 linerel
+    88  -396 linerel
+   -56    68 linerel
+;
+
+: asteroids-0CB8 ( -- )
+   -76  -120 linerel
+   -52   132 linerel
+;
+
+: asteroids-0CC2 ( -- )
+    16 4 *  -24 4 * moverel
+   -32 4 *    0 4 * linerel
+   -16 4 *  -16 4 * linerel
+   128   384 linerel
+   128  -384 linerel
+   -16 4 *   16 4 * linerel
+;
+
+: asteroids-0CD4 ( -- )
+   -16 4 *  -32 4 * linerel
+   -16 4 *   32 4 * linerel
+;
+
+2000 2000 moveto
+
+create schiffe
+
+' asteroids-0A6E ,
+' asteroids-0AA2 ,
+
+' asteroids-0AA8 ,
+' asteroids-0AC2 ,
+
+' asteroids-0ACC ,
+' asteroids-0AE6 ,
+
+' asteroids-0AF0 ,
+' asteroids-0B0A ,
+
+' asteroids-0B14 ,   \ ***
+' asteroids-0B2C ,   \ ***
+
+' asteroids-0B36 ,
+' asteroids-0B50 ,
+
+' asteroids-0B5A ,
+' asteroids-0B74 ,
+
+' asteroids-0B7E ,
+' asteroids-0B98 ,
+
+' asteroids-0BA2 ,
+' asteroids-0BBC ,
+
+' asteroids-0BC6 ,
+' asteroids-0BE0 ,
+
+' asteroids-0BEA ,
+' asteroids-0C04 ,
+
+' asteroids-0C0E ,
+' asteroids-0C28 ,
+
+' asteroids-0C32 ,
+' asteroids-0C4C ,
+
+' asteroids-0C56 ,
+' asteroids-0C70 ,
+
+' asteroids-0C7A ,
+' asteroids-0C94 ,
+
+' asteroids-0C9E ,
+' asteroids-0CB8 ,
+
+' asteroids-0CC2 ,
+' asteroids-0CD4 ,
+
+: schiff ( angle thrust -- )
+
+  >r
+  dup $30 and
+
+  case
+    $00 of  1 scale-x !  1 scale-y ! $0F and            endof
+    $10 of -1 scale-x !  1 scale-y ! $0F and  16 swap - endof
+    $20 of -1 scale-x ! -1 scale-y ! $0F and            endof
+    $30 of  1 scale-x ! -1 scale-y ! $0F and  16 swap - endof
+  endcase
+
+ \ dup ." Schiff " . cr
+
+  r>
+  if
+    2* cells schiffe + dup   @ execute
+                       cell+ @ execute
+  else
+    2* cells schiffe +       @ execute
+  then
+
+  1 scale-x ! 1 scale-y !
+;
+
+
+\ -------------------------------------------------------------
+\  Mathematics tools
+\ -------------------------------------------------------------
+
+: flip ( x u -- x' )
+  >r
+  r@  1 and if dup $5555 and  1 lshift swap $AAAA and  1 rshift or then
+  r@  2 and if dup $3333 and  2 lshift swap $CCCC and  2 rshift or then
+  r@  4 and if dup $0F0F and  4 lshift swap $F0F0 and  4 rshift or then
+  r>  8 and if dup $00FF and  8 lshift swap $FF00 and  8 rshift or then
+;
+
+\ Used for vertical thrust (offset by 64 to get cosine for horizontal thrust)
+
+create thrust
+
+$0003 8 flip ,
+$0609 8 flip ,
+$0C10 8 flip ,
+$1316 8 flip ,
+$191C 8 flip ,
+$1F22 8 flip ,
+$2528 8 flip ,
+$2B2E 8 flip ,
+$3133 8 flip ,
+$3639 8 flip ,
+$3C3F 8 flip ,
+$4144 8 flip ,
+$4749 8 flip ,
+$4C4E 8 flip ,
+$5153 8 flip ,
+$5558 8 flip ,
+$5A5C 8 flip ,
+$5E60 8 flip ,
+$6264 8 flip ,
+$6668 8 flip ,
+$6A6B 8 flip ,
+$6D6F 8 flip ,
+$7071 8 flip ,
+$7374 8 flip ,
+$7576 8 flip ,
+$7879 8 flip ,
+$7A7A 8 flip ,
+$7B7C 8 flip ,
+$7D7D 8 flip ,
+$7E7E 8 flip ,
+$7E7F 8 flip ,
+$7F7F 8 flip ,
+$7F00 8 flip ,
+
+thrust constant thrust
+
+: thrust-table ( -- ) cr 65 0 do i thrust + c@ .x cr loop ;
+
+\ : th-sin ( x -- n ) $3F and            thrust + c@ ;
+\ : th-cos ( x -- n ) $3F and $40 swap - thrust + c@ ;
+
+\ : th-sin ( u -- sin ) $3F and            thrust + c@ ;
+\ : th-cos ( u -- cos ) $3F and $40 swap - thrust + c@ ;
+
+
+: th-sin ( u -- sin )
+  dup  $40 and if   dup $3F and $40 swap - thrust + c@
+               else dup $3F and            thrust + c@ then
+  swap $80 and if negate then
+;
+
+: th-cos ( u -- cos )
+  dup  $40 and if   dup $3F and            thrust + c@
+               else dup $3F and $40 swap - thrust + c@ then
+  swap dup $80 and 0<> swap $40 and 0<> xor if negate then
+;
+
+: sgn ( n -- sgn ) dup 0<> if 0< 2* 1+ then ;
+
+\ -------------------------------------------------------------
+\  Oscilloscope calibration tools
+\ -------------------------------------------------------------
+
+\ Koordinaten 0 bis 4095
+
+: rahmen ( -- )
+     0    0    0 4095 line
+     0 4095 4095 4095 line
+  4095 4095 4095    0 line
+  4095    0    0    0 line
+;
+
+\ -------------------------------------------------------------
+\  Position wrap
+\ -------------------------------------------------------------
+
+260 constant rand
+2 constant fixpoint
+
+: wrappos ( pos -- pos' )
+  dup fixpoint arshift      rand   < if 4095 rand 2* -        fixpoint lshift + else
+  dup fixpoint arshift 4095 rand - > if 4095 rand 2* - negate fixpoint lshift + then then
+;
+
+\ -------------------------------------------------------------
+\  Partikelsimulator
+\ -------------------------------------------------------------
+
+7 cells constant partikelsize
+64 constant #particles
+
+#particles partikelsize * buffer: felshaufen
+
+: partikel-px    ( u -- addr )  partikelsize * 0 cells felshaufen + + ;
+: partikel-py    ( u -- addr )  partikelsize * 1 cells felshaufen + + ;
+: partikel-vx    ( u -- addr )  partikelsize * 2 cells felshaufen + + ;
+: partikel-vy    ( u -- addr )  partikelsize * 3 cells felshaufen + + ;
+: partikel-scale ( u -- addr )  partikelsize * 4 cells felshaufen + + ;
+: partikel-draw  ( u -- addr )  partikelsize * 5 cells felshaufen + + ;
+: partikel-live  ( u -- addr )  partikelsize * 6 cells felshaufen + + ;
+
+: copy-partikel ( n1 n2 -- )
+  swap partikelsize * felshaufen +
+  swap partikelsize * felshaufen +
+  partikelsize
+  move
+;
+
+: partikelnurzeichnen ( -- )
+
+  #particles 0 do
+    i partikel-draw @
+    ?dup if
+
+      \ Zeichnen
+
+      i partikel-px    @   fixpoint rshift
+      i partikel-py    @   fixpoint rshift   moveto
+      i partikel-scale @   scale !
+
+      execute
+
+    then
+  loop
+;
+
+: partikelsimulator ( -- )
+
+  #particles 0 do
+    i partikel-draw @
+    ?dup if
+
+      \ Zeichnen
+
+      i partikel-px    @   fixpoint rshift
+      i partikel-py    @   fixpoint rshift   moveto
+      i partikel-scale @   scale !
+
+      execute
+
+      \ Bewegung
+
+      i partikel-px @  i partikel-vx @  + wrappos  i partikel-px !
+      i partikel-py @  i partikel-vy @  + wrappos  i partikel-py !
+
+
+      \ Lebensdauer erreicht?
+
+      i partikel-live @ ?dup
+      if
+        dup 1 = if drop 0 i partikel-draw ! else 1- i partikel-live ! then
+      then
+
+    then
+  loop
+;
+
+
+\ -------------------------------------------------------------
+\  Zuordnung der Objekte zu Partikelnummern
+\ -------------------------------------------------------------
+
+  0 constant <schiff>
+  1 constant <kugeln>
+ 16 constant <felsen>
+
+  8 constant #kugeln
+ 16 constant #felsen
+
+\ -------------------------------------------------------------
+\  Felsbrocken
+\ -------------------------------------------------------------
+
+: asteroids-09DE ( -- )
+     0    16 moverel
+    16    16 linerel
+    16   -16 linerel
+    -8   -16 linerel
+     8   -16 linerel
+   -24   -16 linerel
+   -24     0 linerel
+   -16    16 linerel
+     0    32 linerel
+    16    16 linerel
+    16   -16 linerel
+;
+
+: asteroids-09FE ( -- )
+    16     8 moverel
+    16     8 linerel
+   -16    16 linerel
+   -16    -8 linerel
+   -16     8 linerel
+   -16   -16 linerel
+     8   -16 linerel
+    -8   -16 linerel
+    16   -16 linerel
+     8     8 linerel
+    24    -8 linerel
+    16    24 linerel
+   -16    16 linerel
+;
+
+: asteroids-0A1A ( -- )
+   -16     0 moverel
+   -16    -8 linerel
+    16   -24 linerel
+    16    24 linerel
+     0   -24 linerel
+    16     0 linerel
+    16    24 linerel
+     0    16 linerel
+   -16    24 linerel
+   -24     0 linerel
+   -24   -24 linerel
+    16    -8 linerel
+;
+
+: asteroids-0A34 ( -- )
+     8     0 moverel
+    24     8 linerel
+     0     8 linerel
+   -24    16 linerel
+   -24     0 linerel
+     8   -16 linerel
+   -24     0 linerel
+     0   -24 linerel
+    16   -24 linerel
+    24     8 linerel
+     8    -8 linerel
+    16    16 linerel
+   -24    16 linerel
+;
+
+: neuerfels ( draw-addr n -- )
+  >r
+
+  cycles
+  dup 63 and 4 * th-cos 2/  r@ partikel-vx    !
+      63 and 4 * th-sin 2/  r@ partikel-vy    !
+  cycles 4095 and wrappos fixpoint lshift r@ partikel-px    !
+  cycles 4095 and wrappos fixpoint lshift r@ partikel-py    !
+                        5   r@ partikel-scale !
+                            r> partikel-draw  !
+;
+
+: init-felsen ( -- )
+  ['] asteroids-09DE <felsen>  0 + neuerfels  \ Zerlegung in Partikel  1 bis  4
+  ['] asteroids-09FE <felsen>  4 + neuerfels  \ Zerlegung in Partikel  5 bis  8
+  ['] asteroids-0A1A <felsen>  8 + neuerfels  \ Zerlegung in Partikel  9 bis 12
+  ['] asteroids-0A34 <felsen> 12 + neuerfels  \ Zerlegung in Partikel 13 bis 16
+;
+
+3 variable lives
+
+: felsspaltung ( n -- ) >r
+
+  r@ partikel-scale @ 3 u< \ Zu klein? Kann weg!
+  if
+    0 r@ partikel-draw !
+
+
+    false
+    <felsen> #felsen + <felsen> do
+      i partikel-draw @ or
+    loop
+    0= \ Keine Felsen mehr da? Prima! Neue Felsen, neues Glück.
+    if
+      init-felsen
+      3 lives !
+    then
+
+  else
+
+    \ Den gleichen Felsen in Stücke spalten
+
+    r@ dup 1+ copy-partikel
+
+    \ Verkleinern
+
+    -1 r@    partikel-scale +!
+    -1 r@ 1+ partikel-scale +!
+
+    \ Zufällige neue Richtungen
+
+  cycles
+  dup 63 and 4 * th-cos 2/ r@    partikel-vx    !
+      63 and 4 * th-sin 2/ r@    partikel-vy    !
+
+  cycles
+  dup 63 and 4 * th-cos 2/ r@ 1+ partikel-vx    !
+      63 and 4 * th-sin 2/ r@ 1+ partikel-vy    !
+
+  then
+
+  rdrop
+;
+
+
+\ -------------------------------------------------------------
+\  Raumschiff
+\ -------------------------------------------------------------
+
+0 variable angle
+0 variable brake-counter
+0 variable firework
+
+: schiffsreibung ( -- )
+
+  1 brake-counter +!
+
+  brake-counter @ 127 and 0=
+  if
+    \ Langsam Geschwindigkeit verlieren
+    0 partikel-vx @ sgn negate 0 partikel-vx +!
+    0 partikel-vy @ sgn negate 0 partikel-vy +!
+  then
+;
+
+300 constant maxvelo
+
+: accelerate ( -- )
+  angle @ 63 and 4 * th-cos 2 arshift <schiff> partikel-vx @ + maxvelo negate max maxvelo min <schiff> partikel-vx !
+  angle @ 63 and 4 * th-sin 2 arshift <schiff> partikel-vy @ + maxvelo negate max maxvelo min <schiff> partikel-vy !
+  150 firework !
+;
+
+: brake ( -- )
+  0               <schiff> partikel-vx    !
+  0               <schiff> partikel-vy    !
+;
+
+: draw-schiff ( -- )
+  firework @ if -1 firework +! then
+  angle @ firework @ 0<> schiff
+  schiffsreibung
+;
+
+\ -------------------------------------------------------------
+\   Explosion des Schiffes
+\ -------------------------------------------------------------
+
+: asteroids-08E0 ( -- )
+    -8 4 *  -12 4 * linerel
+     4 4 *   -8 4 * linerel
+     6 4 *    2 4 * linerel
+    -8 4 *    8 4 * linerel
+    -6 4 *    2 4 * linerel
+     4 4 *   -4 4 * linerel
+;
+
+\ -------------------------------------------------------------
+\   Trümmerwolke
+\ -------------------------------------------------------------
+
+: asteroids-0900 ( -- )
+
+   -16     0 moverel
+     0     0 linerel
+   -16   -16 moverel
+     0     0 linerel
+    16   -16 moverel
+     0     0 linerel
+    24     8 moverel
+     0     0 linerel
+    16    -8 moverel
+     0     0 linerel
+     0    16 moverel
+     0     0 linerel
+     8    24 moverel
+     0     0 linerel
+    -8    24 moverel
+     0     0 linerel
+  -128   -32 moverel
+     0     0 linerel
+   -24     8 moverel
+     0     0 linerel
+;
+
+\ -------------------------------------------------------------
+\  Kanonenkugel
+\ -------------------------------------------------------------
+
+: draw-kugel ( -- ) 100 0 do current-x @ current-y @ putpixel loop ;
+
+: kugelwurf ( u -- )
+  <schiff> partikel-vx @ angle @ 63 and 4 * th-cos + over partikel-vx    !
+  <schiff> partikel-vy @ angle @ 63 and 4 * th-sin + over partikel-vy    !
+  <schiff> partikel-px @     over partikel-px    !
+  <schiff> partikel-py @     over partikel-py    !
+  90                         over partikel-live  !
+  ['] draw-kugel             swap partikel-draw  !
+;
+
+: kanone ( -- )
+  <kugeln> #kugeln + <kugeln> do
+    i partikel-draw @ 0= if i kugelwurf unloop exit then
+  loop
+;
+
+\ -------------------------------------------------------------
+\  Kollisionserkennung
+\ -------------------------------------------------------------
+
+0 variable punkte
+
+: kollision ( n1 n2 -- flag )
+
+  over partikel-draw @ 0<>
+  over partikel-draw @ 0<> and >r
+
+  2dup partikel-px @
+  swap partikel-px @ - abs 600 u< >r
+
+       partikel-py @
+  swap partikel-py @ - abs 600 u< r> and
+
+  r> and
+;
+
+0 variable teilewolke
+
+: interaktion ( -- )
+
+  <kugeln> #kugeln + <kugeln> do
+    <felsen> #felsen + <felsen> do
+      i j kollision
+      if
+        0 j partikel-draw !  \ Kugel verbraucht
+          i felsspaltung     \ Fels gespalten
+          1 punkte +!        \ Punkt erzielt
+      then
+    loop
+  loop
+
+
+  <schiff> partikel-draw @ ['] draw-schiff =  \ Schiff intakt und keine Trümmerwolke?
+  if
+    <felsen> #felsen + <felsen> do
+      i <schiff> kollision
+      if
+        0 teilewolke !
+        ['] asteroids-0900 <schiff> partikel-draw !            \ Schiff in Stücke
+        lives @ if -1 lives +! else 3 lives ! 0 punkte ! then  \ Weniger Leben oder Game Over
+        i felsspaltung                                         \ Fels gespalten
+        brake                                                  \ Keine Bewegung mehr
+                                                               \ Neues Schiff erscheint, wo das alte kaputt gegangen ist
+      then
+    loop
+  else
+
+    \ Schiff ist kaputt.
+
+    1 teilewolke +!
+
+    teilewolke @ 3 rshift 1+ <schiff> partikel-scale ! \ Wolke fliegt auseinander
+
+    teilewolke @ 127 = if
+      ['] draw-schiff <schiff> partikel-draw  !
+      1               <schiff> partikel-scale !
+    then
+
+  then
+;
+
+\ -------------------------------------------------------------
+\  Extraleben
+\ -------------------------------------------------------------
+
+: asteroids-0CDA ( -- )
+   -16 4 *  -24 4 * moverel
+    32 4 *    0 4 * linerel
+    16 4 *  -16 4 * linerel
+  -128   384 linerel
+  -128  -384 linerel
+    16 4 *   16 4 * linerel
+   320    96 moverel
+;
+
+\ -------------------------------------------------------------
+\  Zeitbasis, 100e6/2^16 = 1525.9 Hz.
+\ -------------------------------------------------------------
+
+0 variable time
+
+: interrupt ( -- ) time @ 1+ time ! nop ; \ Store und Interrupt-Rücksprung in einem Takt vertragen sich irgendwie nicht. Dafür das nop.
+
+' interrupt 2/ 1 cells !
+
+\ -------------------------------------------------------------
+\  Spielmechanik
+\ -------------------------------------------------------------
+
+25 variable duration  \ 100e6/2^16 = 1525.9 Hz. Möchte hier etwa 10 Aktualisierungen pro Sekunde.
+
+: asteroids ( -- )
+
+  felshaufen #particles partikelsize * 0 fill
+
+  init-felsen
+
+  0                    <schiff> partikel-vx    !
+  0                    <schiff> partikel-vy    !
+  2047 fixpoint lshift <schiff> partikel-px    !
+  2047 fixpoint lshift <schiff> partikel-py    !
+  0                    <schiff> partikel-live  !
+  1                    <schiff> partikel-scale !
+  ['] draw-schiff      <schiff> partikel-draw  !
+
+  0 punkte !
+  3 lives !
+
+  eint
+
+  blanking \ Strahl ausschalten
+  kalibration \ Konfiguration für den Frequenzbereich laden
+  reset-underflow \ Zu-langsam-Pixel-nachgelegt-Erkennung zurücksetzen
+
+\  128 0 do
+    rahmen
+\  loop
+
+  0 time !
+
+  begin
+
+    dint time @ duration @ - time ! eint \ Die "überschüssige" Zeit vom letzten Mal berücksichtigen
+
+      1 scale ! 3000 3800 moveto lives @ 0 ?do asteroids-0CDA loop \ Zahl der Leben anzeigen
+      partikelsimulator
+
+    begin
+      time @ duration @ <
+    while
+      1 scale ! 3000 3800 moveto lives @ 0 ?do asteroids-0CDA loop \ Zahl der Leben anzeigen
+      partikelnurzeichnen
+    repeat
+
+    interaktion
+
+    key? if
+      key case
+              27 of
+
+  blanking \ Strahl ausschalten
+  underflow? if ." Underflow - Zu langsam gezeichnet" cr then
+  begin idle? until \ Ende des Zeichnens abwarten
+
+  depth . \ Prüfen, ob überschüssige Werte auf dem Stack liegen geblieben sind.
+           \ Muss Null sein, sonst ist ein Fehler im Quelltext.
+
+              exit endof \ ESC
+
+        [char] w of accelerate                 endof
+        [char] s of brake                      endof
+        [char] a of angle @ 1 + 63 and angle ! endof
+        [char] d of angle @ 1 - 63 and angle ! endof
+              32 of kanone                     endof
+
+      endcase
+    then
+
+  again
+;
+
+asteroids

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Tidy up..."
+mkdir build
+rm -f build/*
+
+echo "Compile nucleus..."
+cp ../common-crosscompiler/cross-16kb.fs cross.fs
+cp ../common-crosscompiler/instructionset-16kb-dualport.fs instructionset.fs
+gforth cross.fs instructionset.fs nucleus.fs
+rm cross.fs instructionset.fs
+echo ""
+
+echo "Compile additional Forth sources..."
+
+cat ../common-forth/coredefinitions.fs basisdefinitions.fs ../common/fixpoint.fs ../common/double.fs ../common-forth/insight-16kb-dualport.fs > included.fs
+
+../common-crosscompiler/icecreammachine-16kb build/nucleus.hex build/iceimage.hex included.fs > build/log.txt
+
+md5sum build/nucleus.hex build/iceimage.hex
+
+cp build/iceimage.hex iceimage.hex
+cp iceimage.hex max10

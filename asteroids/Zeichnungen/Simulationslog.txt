@@ -1,0 +1,1643 @@
+
+Mecrisp-Ice 2.6
+
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Register der Vektorgrafikeinheit  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+$0430 constant freq0low    \ WO  ok.
+$0440 constant freq0high   \ WO  ok.
+$0450 constant freq1low    \ WO  ok.
+$0460 constant freq1high   \ WO  ok.
+$0470 constant amplitude0  \ WO  ok.
+$0480 constant amplitude1  \ WO: Nebenwirkung beim Schreiben: Pixel in Puffer  ok.
+$0490 constant fifo-status \ RW: Nebenwirkung beim Schreiben: Overflow löschen  ok.
+$04A0 constant 2nd-update  \ RW: Ein weiterer Updatepuls  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Intensitätskalibrationstabellen  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+create kalix  ok.
+369  ,  ok.
+366  ,  ok.
+364  ,  ok.
+359  ,  ok.
+356  ,  ok.
+353  ,  ok.
+349  ,  ok.
+347  ,  ok.
+343  ,  ok.
+340  ,  ok.
+336  ,  ok.
+334  ,  ok.
+330  ,  ok.
+328  ,  ok.
+327  ,  ok.
+323  ,  ok.
+321  ,  ok.
+318  ,  ok.
+316  ,  ok.
+314  ,  ok.
+312  ,  ok.
+309  ,  ok.
+308  ,  ok.
+305  ,  ok.
+304  ,  ok.
+300  ,  ok.
+299  ,  ok.
+297  ,  ok.
+296  ,  ok.
+294  ,  ok.
+292  ,  ok.
+291  ,  ok.
+290  ,  ok.
+289  ,  ok.
+285  ,  ok.
+284  ,  ok.
+283  ,  ok.
+281  ,  ok.
+281  ,  ok.
+280  ,  ok.
+278  ,  ok.
+278  ,  ok.
+277  ,  ok.
+276  ,  ok.
+276  ,  ok.
+275  ,  ok.
+273  ,  ok.
+273  ,  ok.
+273  ,  ok.
+272  ,  ok.
+271  ,  ok.
+270  ,  ok.
+270  ,  ok.
+268  ,  ok.
+268  ,  ok.
+268  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+267  ,  ok.
+269  ,  ok.
+269  ,  ok.
+269  ,  ok.
+270  ,  ok.
+270  ,  ok.
+272  ,  ok.
+272  ,  ok.
+272  ,  ok.
+273  ,  ok.
+273  ,  ok.
+274  ,  ok.
+276  ,  ok.
+276  ,  ok.
+277  ,  ok.
+277  ,  ok.
+278  ,  ok.
+280  ,  ok.
+280  ,  ok.
+281  ,  ok.
+283  ,  ok.
+283  ,  ok.
+284  ,  ok.
+285  ,  ok.
+286  ,  ok.
+287  ,  ok.
+288  ,  ok.
+289  ,  ok.
+290  ,  ok.
+291  ,  ok.
+292  ,  ok.
+292  ,  ok.
+293  ,  ok.
+294  ,  ok.
+294  ,  ok.
+295  ,  ok.
+296  ,  ok.
+297  ,  ok.
+298  ,  ok.
+298  ,  ok.
+299  ,  ok.
+299  ,  ok.
+302  ,  ok.
+303  ,  ok.
+304  ,  ok.
+305  ,  ok.
+306  ,  ok.
+306  ,  ok.
+307  ,  ok.
+308  ,  ok.
+310  ,  ok.
+311  ,  ok.
+311  ,  ok.
+311  ,  ok.
+312  ,  ok.
+313  ,  ok.
+314  ,  ok.
+314  ,  ok.
+315  ,  ok.
+316  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+318  ,  ok.
+318  ,  ok.
+319  ,  ok.
+319  ,  ok.
+321  ,  ok.
+320  ,  ok.
+322  ,  ok.
+324  ,  ok.
+323  ,  ok.
+325  ,  ok.
+326  ,  ok.
+326  ,  ok.
+326  ,  ok.
+326  ,  ok.
+327  ,  ok.
+327  ,  ok.
+328  ,  ok.
+328  ,  ok.
+328  ,  ok.
+327  ,  ok.
+328  ,  ok.
+329  ,  ok.
+329  ,  ok.
+329  ,  ok.
+328  ,  ok.
+328  ,  ok.
+328  ,  ok.
+327  ,  ok.
+327  ,  ok.
+327  ,  ok.
+327  ,  ok.
+327  ,  ok.
+327  ,  ok.
+326  ,  ok.
+326  ,  ok.
+326  ,  ok.
+325  ,  ok.
+325  ,  ok.
+324  ,  ok.
+323  ,  ok.
+322  ,  ok.
+321  ,  ok.
+320  ,  ok.
+321  ,  ok.
+320  ,  ok.
+319  ,  ok.
+318  ,  ok.
+317  ,  ok.
+316  ,  ok.
+315  ,  ok.
+315  ,  ok.
+315  ,  ok.
+314  ,  ok.
+312  ,  ok.
+311  ,  ok.
+310  ,  ok.
+310  ,  ok.
+308  ,  ok.
+307  ,  ok.
+306  ,  ok.
+304  ,  ok.
+303  ,  ok.
+302  ,  ok.
+301  ,  ok.
+300  ,  ok.
+300  ,  ok.
+298  ,  ok.
+297  ,  ok.
+297  ,  ok.
+296  ,  ok.
+295  ,  ok.
+294  ,  ok.
+293  ,  ok.
+293  ,  ok.
+291  ,  ok.
+291  ,  ok.
+290  ,  ok.
+288  ,  ok.
+287  ,  ok.
+287  ,  ok.
+288  ,  ok.
+288  ,  ok.
+286  ,  ok.
+286  ,  ok.
+286  ,  ok.
+284  ,  ok.
+284  ,  ok.
+284  ,  ok.
+283  ,  ok.
+283  ,  ok.
+284  ,  ok.
+283  ,  ok.
+284  ,  ok.
+284  ,  ok.
+285  ,  ok.
+286  ,  ok.
+286  ,  ok.
+287  ,  ok.
+288  ,  ok.
+288  ,  ok.
+289  ,  ok.
+290  ,  ok.
+292  ,  ok.
+293  ,  ok.
+295  ,  ok.
+296  ,  ok.
+298  ,  ok.
+299  ,  ok.
+302  ,  ok.
+304  ,  ok.
+306  ,  ok.
+309  ,  ok.
+312  ,  ok.
+314  ,  ok.
+317  ,  ok.
+321  ,  ok.
+325  ,  ok.
+330  ,  ok.
+336  ,  ok.
+345  ,  ok.
+354  ,  ok.
+364  ,  ok.
+375  ,  ok.
+383  ,  ok.
+396  ,  ok.
+  ok.
+kalix constant kalix  ok.
+  ok.
+create kaliy  ok.
+419  ,  ok.
+418  ,  ok.
+416  ,  ok.
+413  ,  ok.
+410  ,  ok.
+409  ,  ok.
+406  ,  ok.
+403  ,  ok.
+400  ,  ok.
+397  ,  ok.
+395  ,  ok.
+391  ,  ok.
+389  ,  ok.
+386  ,  ok.
+384  ,  ok.
+381  ,  ok.
+378  ,  ok.
+377  ,  ok.
+374  ,  ok.
+371  ,  ok.
+369  ,  ok.
+367  ,  ok.
+364  ,  ok.
+364  ,  ok.
+361  ,  ok.
+358  ,  ok.
+357  ,  ok.
+354  ,  ok.
+354  ,  ok.
+352  ,  ok.
+349  ,  ok.
+348  ,  ok.
+347  ,  ok.
+345  ,  ok.
+344  ,  ok.
+341  ,  ok.
+340  ,  ok.
+338  ,  ok.
+337  ,  ok.
+336  ,  ok.
+334  ,  ok.
+333  ,  ok.
+332  ,  ok.
+330  ,  ok.
+330  ,  ok.
+329  ,  ok.
+328  ,  ok.
+328  ,  ok.
+326  ,  ok.
+325  ,  ok.
+325  ,  ok.
+322  ,  ok.
+322  ,  ok.
+321  ,  ok.
+321  ,  ok.
+319  ,  ok.
+319  ,  ok.
+318  ,  ok.
+318  ,  ok.
+318  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+316  ,  ok.
+315  ,  ok.
+315  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+317  ,  ok.
+318  ,  ok.
+318  ,  ok.
+318  ,  ok.
+319  ,  ok.
+319  ,  ok.
+321  ,  ok.
+322  ,  ok.
+322  ,  ok.
+323  ,  ok.
+323  ,  ok.
+324  ,  ok.
+324  ,  ok.
+326  ,  ok.
+326  ,  ok.
+327  ,  ok.
+327  ,  ok.
+328  ,  ok.
+328  ,  ok.
+329  ,  ok.
+331  ,  ok.
+331  ,  ok.
+332  ,  ok.
+333  ,  ok.
+333  ,  ok.
+334  ,  ok.
+334  ,  ok.
+335  ,  ok.
+336  ,  ok.
+337  ,  ok.
+337  ,  ok.
+339  ,  ok.
+340  ,  ok.
+340  ,  ok.
+342  ,  ok.
+343  ,  ok.
+343  ,  ok.
+344  ,  ok.
+345  ,  ok.
+345  ,  ok.
+346  ,  ok.
+346  ,  ok.
+346  ,  ok.
+348  ,  ok.
+348  ,  ok.
+349  ,  ok.
+350  ,  ok.
+350  ,  ok.
+351  ,  ok.
+351  ,  ok.
+352  ,  ok.
+352  ,  ok.
+352  ,  ok.
+353  ,  ok.
+353  ,  ok.
+354  ,  ok.
+353  ,  ok.
+353  ,  ok.
+353  ,  ok.
+355  ,  ok.
+354  ,  ok.
+353  ,  ok.
+353  ,  ok.
+353  ,  ok.
+353  ,  ok.
+353  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+354  ,  ok.
+352  ,  ok.
+352  ,  ok.
+352  ,  ok.
+350  ,  ok.
+350  ,  ok.
+350  ,  ok.
+350  ,  ok.
+350  ,  ok.
+349  ,  ok.
+348  ,  ok.
+348  ,  ok.
+345  ,  ok.
+345  ,  ok.
+345  ,  ok.
+344  ,  ok.
+344  ,  ok.
+343  ,  ok.
+341  ,  ok.
+340  ,  ok.
+340  ,  ok.
+339  ,  ok.
+339  ,  ok.
+337  ,  ok.
+336  ,  ok.
+335  ,  ok.
+335  ,  ok.
+334  ,  ok.
+332  ,  ok.
+331  ,  ok.
+330  ,  ok.
+330  ,  ok.
+328  ,  ok.
+327  ,  ok.
+326  ,  ok.
+325  ,  ok.
+324  ,  ok.
+323  ,  ok.
+322  ,  ok.
+321  ,  ok.
+319  ,  ok.
+318  ,  ok.
+317  ,  ok.
+316  ,  ok.
+315  ,  ok.
+314  ,  ok.
+313  ,  ok.
+311  ,  ok.
+310  ,  ok.
+310  ,  ok.
+309  ,  ok.
+307  ,  ok.
+307  ,  ok.
+306  ,  ok.
+305  ,  ok.
+304  ,  ok.
+303  ,  ok.
+303  ,  ok.
+302  ,  ok.
+301  ,  ok.
+300  ,  ok.
+300  ,  ok.
+300  ,  ok.
+298  ,  ok.
+298  ,  ok.
+298  ,  ok.
+298  ,  ok.
+297  ,  ok.
+298  ,  ok.
+298  ,  ok.
+297  ,  ok.
+297  ,  ok.
+298  ,  ok.
+298  ,  ok.
+298  ,  ok.
+298  ,  ok.
+299  ,  ok.
+299  ,  ok.
+300  ,  ok.
+300  ,  ok.
+302  ,  ok.
+303  ,  ok.
+304  ,  ok.
+305  ,  ok.
+306  ,  ok.
+308  ,  ok.
+310  ,  ok.
+311  ,  ok.
+313  ,  ok.
+314  ,  ok.
+316  ,  ok.
+318  ,  ok.
+320  ,  ok.
+322  ,  ok.
+324  ,  ok.
+327  ,  ok.
+331  ,  ok.
+334  ,  ok.
+336  ,  ok.
+339  ,  ok.
+341  ,  ok.
+344  ,  ok.
+  ok.
+kaliy constant kaliy  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Primitiven zur Anzeige von Pixeln  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: full? ( -- ? ) fifo-status io@ 1 and 0<> ;  ok.
+: idle? ( -- ? ) fifo-status io@ 2 and 0<> ;  ok.
+  ok.
+: reset-underflow ( -- ) 0 fifo-status io! ;  ok.
+: underflow? ( -- ? ) fifo-status io@ 4 and 0<> ;  ok.
+  ok.
+  \ Bestimmung der Frequenzwerte:  ok.
+  \  ok.
+  \ Anfang des Bereiches:  70e6/400e6*2^32 =  751619276.80000  ok.
+  \ Ende   des Bereiches:  80e6/400e6*2^32 =  858993459.20000  ok.
+  ok.
+  \ Offset, um 70 MHz für Koordinate 0 zu erreichen: 751619277.  ok.
+  ok.
+  \ Möchte nun gerne den Skalierfaktor bestimmen, um bei maximaler Koordinate den Vollausschlag zu erreichen.  ok.
+  \ (858993459.20000 - 751619276.80000) / 32767 = 3276.9  ok.
+  ok.
+  \ Skalierung, um 80 MHz für Koordinate 32767 zu erreichen: 3277  ok.
+  ok.
+: kalibration ( -- )  ok.
+  ok.
+  751619277. $0230 ( freq-ch0-high ) io! $0220 ( freq-ch0-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.  ok.
+  751619277. $0250 ( freq-ch1-high ) io! $0240 ( freq-ch1-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.  ok.
+  ok.
+    0 2nd-update io! \ Keinen zusätzlichen Update-Puls, Position 0 fällt mit dem normalen Update-Puls zusammen.  ok.
+ \ 22 2nd-update io! \ Einen weiteren Updatepuls nachdem die X-Daten übertragen worden sind.  ok.
+;  ok.
+  ok.
+: putpixel ( x y -- ) \ Angepasst für einen Bereich von 0 bis 4095  ok.
+  4095 and  ok.
+  8 *  ok.
+  [ $6024 , ] \ "dup >r" in einem Opcode  ok.
+  3277 [ $7511 , ] freq1high io!  \ "2dup um* nip" in einem Opcode  ok.
+         *         freq1low  io!  ok.
+  ok.
+  4095 and  ok.
+  8 *  ok.
+  dup  ok.
+  3277 [ $7511 , ] freq0high io!  ok.
+         *         freq0low  io!  ok.
+  ok.
+  \ Trick: LSB der Adresse wird bei @ und ! ignoriert.  ok.
+  ok.
+          6 rshift kalix + @ amplitude0 ( io! ) [ $6B4F , ] \ "io! r>" in einem Opcode  ok.
+  ( r> )  6 rshift kaliy + @  ok.
+  ok.
+  \ Den Pixel eventuell mehrfach zeichnen, um Zeit fürs Rechnen zu gewinnen:  ok.
+  ok.
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 3.52 us  ok.
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 2.64 us  ok.
+  begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 1.76 us  ok.
+  begin fifo-status io@ 1 and while repeat     amplitude1 io! \ 0.88 us  ok.
+;  ok.
+  ok.
+: blanking ( -- )  ok.
+  ok.
+  0 freq1low  io!  ok.
+  0 freq1high io!  ok.
+  ok.
+  0 freq0low  io!  ok.
+  0 freq0high io!  ok.
+  ok.
+  0 amplitude0 io!  ok.
+  ok.
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!  ok.
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!  ok.
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!  ok.
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Bresenham line  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+0 variable line-sx   0 variable line-sy  ok.
+0 variable line-dx   0 variable line-dy  ok.
+  ok.
+4 constant distance  ok.
+  ok.
+: line ( x0 y0 x1 y1 -- )  ok.
+  ok.
+  distance rshift >r  ok.
+  distance rshift >r  ok.
+  distance rshift >r  ok.
+  distance rshift r> r> r>  ok.
+  ok.
+  >r swap >r ( x0 x1 R: y1 y0 )  ok.
+  ok.
+  >r dup r> -  ok.
+    dup 0 < not 1 or distance lshift  line-sx !  ok.
+  abs           line-dx !  ok.
+  ok.
+  ( x0 R: x1 x0 ) distance lshift  ok.
+  ok.
+  r> r> ( x0 y0 y1 )  ok.
+  ok.
+  >r dup r> -  ok.
+    dup 0 < not 1 or distance lshift  line-sy !  ok.
+  abs invert 1+ line-dy !  ok.
+  ok.
+  ( x0 y0 ) distance lshift  ok.
+  ok.
+  line-dx @ line-dy @  ok.
+  over over invert 1+ max >r ( x0 y0 dx dy R: steps )  ok.
+            +                ( x0 y0 err   R: steps )  ok.
+  ok.
+  ok.
+  begin  ok.
+    >r  ok.
+    over distance lshift over distance lshift putpixel  ok.
+    r>  ok.
+    r@  ok.
+  while  ok.
+    r> 1- >r  ok.
+  ok.
+    ( x y line-err R: steps )  ok.
+  ok.
+    ( dup 2* ) [ $6A11 , ]  >r  ok.
+    ( x y line-err R: steps 2*line-err )  ok.
+  ok.
+    line-dy @ dup r@ <  ( x y line-err dy flag R: steps 2*line-err )  ok.
+                        if + >r swap line-sx @ + swap r> else drop then  ok.
+    line-dx @ r> over < ( x y line-err dx flag R: steps 2*line-err )  ok.
+                        if + >r      line-sy @ +      r> else drop then  ok.
+  repeat  ok.
+  ok.
+  ( x y line-err R: steps )  ok.
+  ok.
+  ( drop rdrop ) [ $610F , ] \ "drop rdrop" in einem Opcode  ok.
+  2drop  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Asteroids  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: cycles ( -- u ) ticks ;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Bresenham line  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+0 variable line-x1   0 variable line-y1  ok.
+0 variable line-sx   0 variable line-sy  ok.
+0 variable line-dx   0 variable line-dy  ok.
+0 variable line-err  ok.
+  ok.
+: line ( x0 y0 x1 y1 -- )  ok.
+  ok.
+  line-y1 ! line-x1 !  ok.
+  ok.
+  over line-x1 @ -   dup 0< if 1 else -1 then line-sx !   abs        line-dx !  ok.
+  dup  line-y1 @ -   dup 0< if 1 else -1 then line-sy !   abs negate line-dy !  ok.
+  line-dx @ line-dy @ + line-err !  ok.
+  ok.
+  begin  ok.
+    2dup putpixel  ok.
+    2dup line-x1 @ line-y1 @ d<>  ok.
+  while  ok.
+    line-err @ 2* >r  ok.
+    r@ line-dy @ > if line-dy @ line-err +! swap line-sx @ + swap then  ok.
+    r> line-dx @ < if line-dx @ line-err +!      line-sy @ +      then  ok.
+  repeat  ok.
+  2drop  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Primitives for drawing  Asteroids style  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+1 variable scale  ok.
+1 variable scale-x  ok.
+1 variable scale-y  ok.
+  ok.
+0 variable current-x  0 variable current-y  ok.
+  ok.
+: moveto ( x y -- ) current-y ! current-x ! ;  ok.
+: lineto ( x y -- ) current-x @ current-y @ 2over line moveto ;  ok.
+  ok.
+: moverel ( dx dy -- ) scale @ * scale-y @ * current-y +! scale @ * scale-x @ * current-x +! ;  ok.
+: linerel ( dx dy -- ) >r scale @ * scale-x @ * current-x @ + r> scale @ * scale-y @ * current-y @ + lineto ;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Graphics for Asteroids  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\   Schiffe und Schub  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+  ok.
+: asteroids-0A6E ( -- )  ok.
+   -24 4 *   -16 4 * moverel  ok.
+     0 4 *   32 4 * linerel  ok.
+   -16 4 *   16 4 * linerel  ok.
+   384  -128 linerel  ok.
+  -384  -128 linerel  ok.
+    16 4 *   16 4 * linerel  ok.
+;  ok.
+  ok.
+: asteroids-0AA2 ( -- )  ok.
+   -32  4 *   16 4 * linerel  ok.
+    32  4 *  16  4 * linerel  ok.
+;  ok.
+  ok.
+: asteroids-0AA8 ( -- )  ok.
+   -88   -72 moverel  ok.
+   -12   128 linerel  ok.
+   -68    56 linerel  ok.
+   396   -88 linerel  ok.
+  -368  -164 linerel  ok.
+    56    68 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0AC2 ( -- )  ok.
+  -132    52 linerel  ok.
+   120    76 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0ACC ( -- )  ok.
+   -80   -80 moverel  ok.
+   -24   124 linerel  ok.
+   -76    52 linerel  ok.
+   400   -52 linerel  ok.
+  -352  -200 linerel  ok.
+    52    76 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0AE6 ( -- )  ok.
+  -140    36 linerel  ok.
+   112    88 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0AF0 ( -- )  ok.
+   -72   -88 moverel  ok.
+   -36   124 linerel  ok.
+   -80    44 linerel  ok.
+   404   -12 linerel  ok.
+  -332  -232 linerel  ok.
+    44    80 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B0A ( -- )  ok.
+  -140    24 linerel  ok.
+   104   100 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B14 ( -- )  ok.
+   -16 4 *  -24  4 * moverel  \ *** Gekipptes Bit?  ok.
+   -48   120 linerel  ok.
+   -84    36 linerel  ok.
+   404    28 linerel  ok.
+  -304  -264 linerel  ok.
+    36    84 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B2C ( -- )  ok.
+  -144    12 linerel  ok.
+    92   108 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B36 ( -- )  ok.
+   -56  -100 moverel  ok.
+   -60   112 linerel  ok.
+   -88    28 linerel  ok.
+   400    68 linerel  ok.
+  -280  -292 linerel  ok.
+    28    88 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B50 ( -- )  ok.
+  -144    -4 linerel  ok.
+    84   116 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B5A ( -- )  ok.
+   -44  -108 moverel  ok.
+   -72   108 linerel  ok.
+   -88    16 linerel  ok.
+   392   108 linerel  ok.
+  -248  -320 linerel  ok.
+    16    88 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B74 ( -- )  ok.
+  -140   -16 linerel  ok.
+    72   124 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B7E ( -- )  ok.
+   -32  -112 moverel  ok.
+   -80   100 linerel  ok.
+   -92     8 linerel  ok.
+   380   144 linerel  ok.
+  -216  -344 linerel  ok.
+     8    92 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0B98 ( -- )  ok.
+  -140   -32 linerel  ok.
+    60   132 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0BA2 ( -- )  ok.
+   -24  -112 moverel  ok.
+   -92    92 linerel  ok.
+   -92     0 linerel  ok.
+   364   180 linerel  ok.
+  -180  -364 linerel  ok.
+     0    92 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0BBC ( -- )  ok.
+  -136   -44 linerel  ok.
+    44   136 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0BC6 ( -- )  ok.
+   -12  -116 moverel  ok.
+  -100    80 linerel  ok.
+   -92    -8 linerel  ok.
+   344   216 linerel  ok.
+  -144  -380 linerel  ok.
+    -8    92 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0BE0 ( -- )  ok.
+  -132   -60 linerel  ok.
+    32   140 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0BEA ( -- )  ok.
+     0  -116 moverel  ok.
+  -108    72 linerel  ok.
+   -88   -16 linerel  ok.
+   320   248 linerel  ok.
+  -108  -392 linerel  ok.
+   -16    88 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C04 ( -- )  ok.
+  -124   -72 linerel  ok.
+    16   140 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C0E ( -- )  ok.
+    12  -116 moverel  ok.
+  -112    60 linerel  ok.
+   -88   -28 linerel  ok.
+   292   280 linerel  ok.
+   -68  -400 linerel  ok.
+   -28    88 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C28 ( -- )  ok.
+  -116   -84 linerel  ok.
+     4   144 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C32 ( -- )  ok.
+    24  -112 moverel  ok.
+  -120    48 linerel  ok.
+   -84   -36 linerel  ok.
+   264   304 linerel  ok.
+   -28  -404 linerel  ok.
+   -36    84 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C4C ( -- )  ok.
+  -108   -92 linerel  ok.
+   -12   144 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C56 ( -- )  ok.
+    32  -112 moverel  ok.
+  -124    36 linerel  ok.
+   -80   -44 linerel  ok.
+   232   332 linerel  ok.
+    12  -404 linerel  ok.
+   -44    80 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C70 ( -- )  ok.
+  -100  -104 linerel  ok.
+   -24   140 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C7A ( -- )  ok.
+    44  -108 moverel  ok.
+  -124    24 linerel  ok.
+   -76   -52 linerel  ok.
+   200   352 linerel  ok.
+    52  -400 linerel  ok.
+   -52    76 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C94 ( -- )  ok.
+   -88  -112 linerel  ok.
+   -36   140 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0C9E ( -- )  ok.
+    56  -100 moverel  ok.
+  -128    12 linerel  ok.
+   -68   -56 linerel  ok.
+   164   368 linerel  ok.
+    88  -396 linerel  ok.
+   -56    68 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0CB8 ( -- )  ok.
+   -76  -120 linerel  ok.
+   -52   132 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0CC2 ( -- )  ok.
+    16 4 *  -24 4 * moverel  ok.
+   -32 4 *    0 4 * linerel  ok.
+   -16 4 *  -16 4 * linerel  ok.
+   128   384 linerel  ok.
+   128  -384 linerel  ok.
+   -16 4 *   16 4 * linerel  ok.
+;  ok.
+  ok.
+: asteroids-0CD4 ( -- )  ok.
+   -16 4 *  -32 4 * linerel  ok.
+   -16 4 *   32 4 * linerel  ok.
+;  ok.
+  ok.
+2000 2000 moveto  ok.
+  ok.
+create schiffe  ok.
+  ok.
+' asteroids-0A6E ,  ok.
+' asteroids-0AA2 ,  ok.
+  ok.
+' asteroids-0AA8 ,  ok.
+' asteroids-0AC2 ,  ok.
+  ok.
+' asteroids-0ACC ,  ok.
+' asteroids-0AE6 ,  ok.
+  ok.
+' asteroids-0AF0 ,  ok.
+' asteroids-0B0A ,  ok.
+  ok.
+' asteroids-0B14 ,   \ ***  ok.
+' asteroids-0B2C ,   \ ***  ok.
+  ok.
+' asteroids-0B36 ,  ok.
+' asteroids-0B50 ,  ok.
+  ok.
+' asteroids-0B5A ,  ok.
+' asteroids-0B74 ,  ok.
+  ok.
+' asteroids-0B7E ,  ok.
+' asteroids-0B98 ,  ok.
+  ok.
+' asteroids-0BA2 ,  ok.
+' asteroids-0BBC ,  ok.
+  ok.
+' asteroids-0BC6 ,  ok.
+' asteroids-0BE0 ,  ok.
+  ok.
+' asteroids-0BEA ,  ok.
+' asteroids-0C04 ,  ok.
+  ok.
+' asteroids-0C0E ,  ok.
+' asteroids-0C28 ,  ok.
+  ok.
+' asteroids-0C32 ,  ok.
+' asteroids-0C4C ,  ok.
+  ok.
+' asteroids-0C56 ,  ok.
+' asteroids-0C70 ,  ok.
+  ok.
+' asteroids-0C7A ,  ok.
+' asteroids-0C94 ,  ok.
+  ok.
+' asteroids-0C9E ,  ok.
+' asteroids-0CB8 ,  ok.
+  ok.
+' asteroids-0CC2 ,  ok.
+' asteroids-0CD4 ,  ok.
+  ok.
+: schiff ( angle thrust -- )  ok.
+  ok.
+  >r  ok.
+  dup $30 and  ok.
+  ok.
+  case  ok.
+    $00 of  1 scale-x !  1 scale-y ! $0F and            endof  ok.
+    $10 of -1 scale-x !  1 scale-y ! $0F and  16 swap - endof  ok.
+    $20 of -1 scale-x ! -1 scale-y ! $0F and            endof  ok.
+    $30 of  1 scale-x ! -1 scale-y ! $0F and  16 swap - endof  ok.
+  endcase  ok.
+  ok.
+ \ dup ." Schiff " . cr  ok.
+  ok.
+  r>  ok.
+  if  ok.
+    2* cells schiffe + dup   @ execute  ok.
+                       cell+ @ execute  ok.
+  else  ok.
+    2* cells schiffe +       @ execute  ok.
+  then  ok.
+  ok.
+  1 scale-x ! 1 scale-y !  ok.
+;  ok.
+  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Mathematics tools  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: flip ( x u -- x' )  ok.
+  >r  ok.
+  r@  1 and if dup $5555 and  1 lshift swap $AAAA and  1 rshift or then  ok.
+  r@  2 and if dup $3333 and  2 lshift swap $CCCC and  2 rshift or then  ok.
+  r@  4 and if dup $0F0F and  4 lshift swap $F0F0 and  4 rshift or then  ok.
+  r>  8 and if dup $00FF and  8 lshift swap $FF00 and  8 rshift or then  ok.
+;  ok.
+  ok.
+\ Used for vertical thrust (offset by 64 to get cosine for horizontal thrust)  ok.
+  ok.
+create thrust  ok.
+  ok.
+$0003 8 flip ,  ok.
+$0609 8 flip ,  ok.
+$0C10 8 flip ,  ok.
+$1316 8 flip ,  ok.
+$191C 8 flip ,  ok.
+$1F22 8 flip ,  ok.
+$2528 8 flip ,  ok.
+$2B2E 8 flip ,  ok.
+$3133 8 flip ,  ok.
+$3639 8 flip ,  ok.
+$3C3F 8 flip ,  ok.
+$4144 8 flip ,  ok.
+$4749 8 flip ,  ok.
+$4C4E 8 flip ,  ok.
+$5153 8 flip ,  ok.
+$5558 8 flip ,  ok.
+$5A5C 8 flip ,  ok.
+$5E60 8 flip ,  ok.
+$6264 8 flip ,  ok.
+$6668 8 flip ,  ok.
+$6A6B 8 flip ,  ok.
+$6D6F 8 flip ,  ok.
+$7071 8 flip ,  ok.
+$7374 8 flip ,  ok.
+$7576 8 flip ,  ok.
+$7879 8 flip ,  ok.
+$7A7A 8 flip ,  ok.
+$7B7C 8 flip ,  ok.
+$7D7D 8 flip ,  ok.
+$7E7E 8 flip ,  ok.
+$7E7F 8 flip ,  ok.
+$7F7F 8 flip ,  ok.
+$7F00 8 flip ,  ok.
+  ok.
+thrust constant thrust  ok.
+  ok.
+: thrust-table ( -- ) cr 65 0 do i thrust + c@ .x cr loop ;  ok.
+  ok.
+\ : th-sin ( x -- n ) $3F and            thrust + c@ ;  ok.
+\ : th-cos ( x -- n ) $3F and $40 swap - thrust + c@ ;  ok.
+  ok.
+\ : th-sin ( u -- sin ) $3F and            thrust + c@ ;  ok.
+\ : th-cos ( u -- cos ) $3F and $40 swap - thrust + c@ ;  ok.
+  ok.
+  ok.
+: th-sin ( u -- sin )  ok.
+  dup  $40 and if   dup $3F and $40 swap - thrust + c@  ok.
+               else dup $3F and            thrust + c@ then  ok.
+  swap $80 and if negate then  ok.
+;  ok.
+  ok.
+: th-cos ( u -- cos )  ok.
+  dup  $40 and if   dup $3F and            thrust + c@  ok.
+               else dup $3F and $40 swap - thrust + c@ then  ok.
+  swap dup $80 and 0<> swap $40 and 0<> xor if negate then  ok.
+;  ok.
+  ok.
+: sgn ( n -- sgn ) dup 0<> if 0< 2* 1+ then ;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Oscilloscope calibration tools  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+\ Koordinaten 0 bis 4095  ok.
+  ok.
+: rahmen ( -- )  ok.
+     0    0    0 4095 line  ok.
+     0 4095 4095 4095 line  ok.
+  4095 4095 4095    0 line  ok.
+  4095    0    0    0 line  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Position wrap  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+260 constant rand  ok.
+2 constant fixpoint  ok.
+  ok.
+: wrappos ( pos -- pos' )  ok.
+  dup fixpoint arshift      rand   < if 4095 rand 2* -        fixpoint lshift + else  ok.
+  dup fixpoint arshift 4095 rand - > if 4095 rand 2* - negate fixpoint lshift + then then  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Partikelsimulator  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+7 cells constant partikelsize  ok.
+64 constant #particles  ok.
+  ok.
+#particles partikelsize * buffer: felshaufen  ok.
+  ok.
+: partikel-px    ( u -- addr )  partikelsize * 0 cells felshaufen + + ;  ok.
+: partikel-py    ( u -- addr )  partikelsize * 1 cells felshaufen + + ;  ok.
+: partikel-vx    ( u -- addr )  partikelsize * 2 cells felshaufen + + ;  ok.
+: partikel-vy    ( u -- addr )  partikelsize * 3 cells felshaufen + + ;  ok.
+: partikel-scale ( u -- addr )  partikelsize * 4 cells felshaufen + + ;  ok.
+: partikel-draw  ( u -- addr )  partikelsize * 5 cells felshaufen + + ;  ok.
+: partikel-live  ( u -- addr )  partikelsize * 6 cells felshaufen + + ;  ok.
+  ok.
+: copy-partikel ( n1 n2 -- )  ok.
+  swap partikelsize * felshaufen +  ok.
+  swap partikelsize * felshaufen +  ok.
+  partikelsize  ok.
+  move  ok.
+;  ok.
+  ok.
+: partikelnurzeichnen ( -- )  ok.
+  ok.
+  #particles 0 do  ok.
+    i partikel-draw @  ok.
+    ?dup if  ok.
+  ok.
+      \ Zeichnen  ok.
+  ok.
+      i partikel-px    @   fixpoint rshift  ok.
+      i partikel-py    @   fixpoint rshift   moveto  ok.
+      i partikel-scale @   scale !  ok.
+  ok.
+      execute  ok.
+  ok.
+    then  ok.
+  loop  ok.
+;  ok.
+  ok.
+: partikelsimulator ( -- )  ok.
+  ok.
+  #particles 0 do  ok.
+    i partikel-draw @  ok.
+    ?dup if  ok.
+  ok.
+      \ Zeichnen  ok.
+  ok.
+      i partikel-px    @   fixpoint rshift  ok.
+      i partikel-py    @   fixpoint rshift   moveto  ok.
+      i partikel-scale @   scale !  ok.
+  ok.
+      execute  ok.
+  ok.
+      \ Bewegung  ok.
+  ok.
+      i partikel-px @  i partikel-vx @  + wrappos  i partikel-px !  ok.
+      i partikel-py @  i partikel-vy @  + wrappos  i partikel-py !  ok.
+  ok.
+  ok.
+      \ Lebensdauer erreicht?  ok.
+  ok.
+      i partikel-live @ ?dup  ok.
+      if  ok.
+        dup 1 = if drop 0 i partikel-draw ! else 1- i partikel-live ! then  ok.
+      then  ok.
+  ok.
+    then  ok.
+  loop  ok.
+;  ok.
+  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Zuordnung der Objekte zu Partikelnummern  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+  0 constant <schiff>  ok.
+  1 constant <kugeln>  ok.
+ 16 constant <felsen>  ok.
+  ok.
+  8 constant #kugeln  ok.
+ 16 constant #felsen  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Felsbrocken  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: asteroids-09DE ( -- )  ok.
+     0    16 moverel  ok.
+    16    16 linerel  ok.
+    16   -16 linerel  ok.
+    -8   -16 linerel  ok.
+     8   -16 linerel  ok.
+   -24   -16 linerel  ok.
+   -24     0 linerel  ok.
+   -16    16 linerel  ok.
+     0    32 linerel  ok.
+    16    16 linerel  ok.
+    16   -16 linerel  ok.
+;  ok.
+  ok.
+: asteroids-09FE ( -- )  ok.
+    16     8 moverel  ok.
+    16     8 linerel  ok.
+   -16    16 linerel  ok.
+   -16    -8 linerel  ok.
+   -16     8 linerel  ok.
+   -16   -16 linerel  ok.
+     8   -16 linerel  ok.
+    -8   -16 linerel  ok.
+    16   -16 linerel  ok.
+     8     8 linerel  ok.
+    24    -8 linerel  ok.
+    16    24 linerel  ok.
+   -16    16 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0A1A ( -- )  ok.
+   -16     0 moverel  ok.
+   -16    -8 linerel  ok.
+    16   -24 linerel  ok.
+    16    24 linerel  ok.
+     0   -24 linerel  ok.
+    16     0 linerel  ok.
+    16    24 linerel  ok.
+     0    16 linerel  ok.
+   -16    24 linerel  ok.
+   -24     0 linerel  ok.
+   -24   -24 linerel  ok.
+    16    -8 linerel  ok.
+;  ok.
+  ok.
+: asteroids-0A34 ( -- )  ok.
+     8     0 moverel  ok.
+    24     8 linerel  ok.
+     0     8 linerel  ok.
+   -24    16 linerel  ok.
+   -24     0 linerel  ok.
+     8   -16 linerel  ok.
+   -24     0 linerel  ok.
+     0   -24 linerel  ok.
+    16   -24 linerel  ok.
+    24     8 linerel  ok.
+     8    -8 linerel  ok.
+    16    16 linerel  ok.
+   -24    16 linerel  ok.
+;  ok.
+  ok.
+: neuerfels ( draw-addr n -- )  ok.
+  >r  ok.
+  ok.
+  cycles  ok.
+  dup 63 and 4 * th-cos 2/  r@ partikel-vx    !  ok.
+      63 and 4 * th-sin 2/  r@ partikel-vy    !  ok.
+  cycles 4095 and wrappos fixpoint lshift r@ partikel-px    !  ok.
+  cycles 4095 and wrappos fixpoint lshift r@ partikel-py    !  ok.
+                        5   r@ partikel-scale !  ok.
+                            r> partikel-draw  !  ok.
+;  ok.
+  ok.
+: init-felsen ( -- )  ok.
+  ['] asteroids-09DE <felsen>  0 + neuerfels  \ Zerlegung in Partikel  1 bis  4  ok.
+  ['] asteroids-09FE <felsen>  4 + neuerfels  \ Zerlegung in Partikel  5 bis  8  ok.
+  ['] asteroids-0A1A <felsen>  8 + neuerfels  \ Zerlegung in Partikel  9 bis 12  ok.
+  ['] asteroids-0A34 <felsen> 12 + neuerfels  \ Zerlegung in Partikel 13 bis 16  ok.
+;  ok.
+  ok.
+3 variable lives  ok.
+  ok.
+: felsspaltung ( n -- ) >r  ok.
+  ok.
+  r@ partikel-scale @ 3 u< \ Zu klein? Kann weg!  ok.
+  if  ok.
+    0 r@ partikel-draw !  ok.
+  ok.
+  ok.
+    false  ok.
+    <felsen> #felsen + <felsen> do  ok.
+      i partikel-draw @ or  ok.
+    loop  ok.
+    0= \ Keine Felsen mehr da? Prima! Neue Felsen, neues Glück.  ok.
+    if  ok.
+      init-felsen  ok.
+      3 lives !  ok.
+    then  ok.
+  ok.
+  else  ok.
+  ok.
+    \ Den gleichen Felsen in Stücke spalten  ok.
+  ok.
+    r@ dup 1+ copy-partikel  ok.
+  ok.
+    \ Verkleinern  ok.
+  ok.
+    -1 r@    partikel-scale +!  ok.
+    -1 r@ 1+ partikel-scale +!  ok.
+  ok.
+    \ Zufällige neue Richtungen  ok.
+  ok.
+  cycles  ok.
+  dup 63 and 4 * th-cos 2/ r@    partikel-vx    !  ok.
+      63 and 4 * th-sin 2/ r@    partikel-vy    !  ok.
+  ok.
+  cycles  ok.
+  dup 63 and 4 * th-cos 2/ r@ 1+ partikel-vx    !  ok.
+      63 and 4 * th-sin 2/ r@ 1+ partikel-vy    !  ok.
+  ok.
+  then  ok.
+  ok.
+  rdrop  ok.
+;  ok.
+  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Raumschiff  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+0 variable angle  ok.
+0 variable brake-counter  ok.
+0 variable firework  ok.
+  ok.
+: schiffsreibung ( -- )  ok.
+  ok.
+  1 brake-counter +!  ok.
+  ok.
+  brake-counter @ 127 and 0=  ok.
+  if  ok.
+    \ Langsam Geschwindigkeit verlieren  ok.
+    0 partikel-vx @ sgn negate 0 partikel-vx +!  ok.
+    0 partikel-vy @ sgn negate 0 partikel-vy +!  ok.
+  then  ok.
+;  ok.
+  ok.
+300 constant maxvelo  ok.
+  ok.
+: accelerate ( -- )  ok.
+  angle @ 63 and 4 * th-cos 2 arshift <schiff> partikel-vx @ + maxvelo negate max maxvelo min <schiff> partikel-vx !  ok.
+  angle @ 63 and 4 * th-sin 2 arshift <schiff> partikel-vy @ + maxvelo negate max maxvelo min <schiff> partikel-vy !  ok.
+  150 firework !  ok.
+;  ok.
+  ok.
+: brake ( -- )  ok.
+  0               <schiff> partikel-vx    !  ok.
+  0               <schiff> partikel-vy    !  ok.
+;  ok.
+  ok.
+: draw-schiff ( -- )  ok.
+  firework @ if -1 firework +! then  ok.
+  angle @ firework @ 0<> schiff  ok.
+  schiffsreibung  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\   Explosion des Schiffes  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: asteroids-08E0 ( -- )  ok.
+    -8 4 *  -12 4 * linerel  ok.
+     4 4 *   -8 4 * linerel  ok.
+     6 4 *    2 4 * linerel  ok.
+    -8 4 *    8 4 * linerel  ok.
+    -6 4 *    2 4 * linerel  ok.
+     4 4 *   -4 4 * linerel  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\   Trümmerwolke  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: asteroids-0900 ( -- )  ok.
+  ok.
+   -16     0 moverel  ok.
+     0     0 linerel  ok.
+   -16   -16 moverel  ok.
+     0     0 linerel  ok.
+    16   -16 moverel  ok.
+     0     0 linerel  ok.
+    24     8 moverel  ok.
+     0     0 linerel  ok.
+    16    -8 moverel  ok.
+     0     0 linerel  ok.
+     0    16 moverel  ok.
+     0     0 linerel  ok.
+     8    24 moverel  ok.
+     0     0 linerel  ok.
+    -8    24 moverel  ok.
+     0     0 linerel  ok.
+  -128   -32 moverel  ok.
+     0     0 linerel  ok.
+   -24     8 moverel  ok.
+     0     0 linerel  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Kanonenkugel  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: draw-kugel ( -- ) 100 0 do current-x @ current-y @ putpixel loop ;  ok.
+  ok.
+: kugelwurf ( u -- )  ok.
+  <schiff> partikel-vx @ angle @ 63 and 4 * th-cos + over partikel-vx    !  ok.
+  <schiff> partikel-vy @ angle @ 63 and 4 * th-sin + over partikel-vy    !  ok.
+  <schiff> partikel-px @     over partikel-px    !  ok.
+  <schiff> partikel-py @     over partikel-py    !  ok.
+  90                         over partikel-live  !  ok.
+  ['] draw-kugel             swap partikel-draw  !  ok.
+;  ok.
+  ok.
+: kanone ( -- )  ok.
+  <kugeln> #kugeln + <kugeln> do  ok.
+    i partikel-draw @ 0= if i kugelwurf unloop exit then  ok.
+  loop  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Kollisionserkennung  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+0 variable punkte  ok.
+  ok.
+: kollision ( n1 n2 -- flag )  ok.
+  ok.
+  over partikel-draw @ 0<>  ok.
+  over partikel-draw @ 0<> and >r  ok.
+  ok.
+  2dup partikel-px @  ok.
+  swap partikel-px @ - abs 600 u< >r  ok.
+  ok.
+       partikel-py @  ok.
+  swap partikel-py @ - abs 600 u< r> and  ok.
+  ok.
+  r> and  ok.
+;  ok.
+  ok.
+0 variable teilewolke  ok.
+  ok.
+: interaktion ( -- )  ok.
+  ok.
+  <kugeln> #kugeln + <kugeln> do  ok.
+    <felsen> #felsen + <felsen> do  ok.
+      i j kollision  ok.
+      if  ok.
+        0 j partikel-draw !  \ Kugel verbraucht  ok.
+          i felsspaltung     \ Fels gespalten  ok.
+          1 punkte +!        \ Punkt erzielt  ok.
+      then  ok.
+    loop  ok.
+  loop  ok.
+  ok.
+  ok.
+  <schiff> partikel-draw @ ['] draw-schiff =  \ Schiff intakt und keine Trümmerwolke?  ok.
+  if  ok.
+    <felsen> #felsen + <felsen> do  ok.
+      i <schiff> kollision  ok.
+      if  ok.
+        0 teilewolke !  ok.
+        ['] asteroids-0900 <schiff> partikel-draw !            \ Schiff in Stücke  ok.
+        lives @ if -1 lives +! else 3 lives ! 0 punkte ! then  \ Weniger Leben oder Game Over  ok.
+        i felsspaltung                                         \ Fels gespalten  ok.
+        brake                                                  \ Keine Bewegung mehr  ok.
+                                                               \ Neues Schiff erscheint, wo das alte kaputt gegangen ist  ok.
+      then  ok.
+    loop  ok.
+  else  ok.
+  ok.
+    \ Schiff ist kaputt.  ok.
+  ok.
+    1 teilewolke +!  ok.
+  ok.
+    teilewolke @ 3 rshift 1+ <schiff> partikel-scale ! \ Wolke fliegt auseinander  ok.
+  ok.
+    teilewolke @ 127 = if  ok.
+      ['] draw-schiff <schiff> partikel-draw  !  ok.
+      1               <schiff> partikel-scale !  ok.
+    then  ok.
+  ok.
+  then  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Extraleben  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+: asteroids-0CDA ( -- )  ok.
+   -16 4 *  -24 4 * moverel  ok.
+    32 4 *    0 4 * linerel  ok.
+    16 4 *  -16 4 * linerel  ok.
+  -128   384 linerel  ok.
+  -128  -384 linerel  ok.
+    16 4 *   16 4 * linerel  ok.
+   320    96 moverel  ok.
+;  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Zeitbasis, 100e6/2^16 = 1525.9 Hz.  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+0 variable time  ok.
+  ok.
+: interrupt ( -- ) time @ 1+ time ! nop ; \ Store und Interrupt-Rücksprung in einem Takt vertragen sich irgendwie nicht. Dafür  ok.
+  ok.
+' interrupt 2/ 1 cells !  ok.
+  ok.
+\ -------------------------------------------------------------  ok.
+\  Spielmechanik  ok.
+\ -------------------------------------------------------------  ok.
+  ok.
+25 variable duration  \ 100e6/2^16 = 1525.9 Hz. Möchte hier etwa 10 Aktualisierungen pro Sekunde.  ok.
+  ok.
+: asteroids ( -- )  ok.
+  ok.
+  felshaufen #particles partikelsize * 0 fill  ok.
+  ok.
+  init-felsen  ok.
+  ok.
+  0                    <schiff> partikel-vx    !  ok.
+  0                    <schiff> partikel-vy    !  ok.
+  2047 fixpoint lshift <schiff> partikel-px    !  ok.
+  2047 fixpoint lshift <schiff> partikel-py    !  ok.
+  0                    <schiff> partikel-live  !  ok.
+  1                    <schiff> partikel-scale !  ok.
+  ['] draw-schiff      <schiff> partikel-draw  !  ok.
+  ok.
+  0 punkte !  ok.
+  3 lives !  ok.
+  ok.
+  eint  ok.
+  ok.
+  blanking \ Strahl ausschalten  ok.
+  kalibration \ Konfiguration für den Frequenzbereich laden  ok.
+  reset-underflow \ Zu-langsam-Pixel-nachgelegt-Erkennung zurücksetzen  ok.
+  ok.
+\  128 0 do  ok.
+    rahmen  ok.
+\  loop  ok.
+  ok.
+  0 time !  ok.
+  ok.
+  begin  ok.
+  ok.
+    dint time @ duration @ - time ! eint \ Die "überschüssige" Zeit vom letzten Mal berücksichtigen  ok.
+  ok.
+      1 scale ! 3000 3800 moveto lives @ 0 ?do asteroids-0CDA loop \ Zahl der Leben anzeigen  ok.
+      partikelsimulator  ok.
+  ok.
+    begin  ok.
+      time @ duration @ <  ok.
+    while  ok.
+      1 scale ! 3000 3800 moveto lives @ 0 ?do asteroids-0CDA loop \ Zahl der Leben anzeigen  ok.
+      partikelnurzeichnen  ok.
+    repeat  ok.
+  ok.
+    interaktion  ok.
+  ok.
+    key? if  ok.
+      key case  ok.
+              27 of  ok.
+  ok.
+  blanking \ Strahl ausschalten  ok.
+  underflow? if ." Underflow - Zu langsam gezeichnet" cr then  ok.
+  begin idle? until \ Ende des Zeichnens abwarten  ok.
+  ok.
+  depth . \ Prüfen, ob überschüssige Werte auf dem Stack liegen geblieben sind.  ok.
+           \ Muss Null sein, sonst ist ein Fehler im Quelltext.  ok.
+  ok.
+              exit endof \ ESC  ok.
+  ok.
+        [char] w of accelerate                 endof  ok.
+        [char] s of brake                      endof  ok.
+        [char] a of angle @ 1 + 63 and angle ! endof  ok.
+        [char] d of angle @ 1 - 63 and angle ! endof  ok.
+              32 of kanone                     endof  ok.
+  ok.
+      endcase  ok.
+    then  ok.
+  ok.
+  again  ok.
+;  ok.
+  ok.
+asteroids 0  ok.
+  ok.
+  ok.
+unused . 260  ok.
+Simulation ended after 45829534 cycles

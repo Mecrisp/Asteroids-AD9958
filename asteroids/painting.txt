@@ -1,0 +1,1272 @@
+
+\ -------------------------------------------------------------
+\  Register der Vektorgrafikeinheit
+\ -------------------------------------------------------------
+
+$0430 constant freq0low    \ WO
+$0440 constant freq0high   \ WO
+$0450 constant freq1low    \ WO
+$0460 constant freq1high   \ WO
+$0470 constant amplitude0  \ WO
+$0480 constant amplitude1  \ WO: Nebenwirkung beim Schreiben: Pixel in Puffer
+$0490 constant fifo-status \ RW: Nebenwirkung beim Schreiben: Overflow löschen
+$04A0 constant 2nd-update  \ RW: Ein weiterer Updatepuls
+
+\ -------------------------------------------------------------
+\  Intensitätskalibrationstabellen
+\ -------------------------------------------------------------
+
+create kalix
+369  ,
+366  ,
+364  ,
+359  ,
+356  ,
+353  ,
+349  ,
+347  ,
+343  ,
+340  ,
+336  ,
+334  ,
+330  ,
+328  ,
+327  ,
+323  ,
+321  ,
+318  ,
+316  ,
+314  ,
+312  ,
+309  ,
+308  ,
+305  ,
+304  ,
+300  ,
+299  ,
+297  ,
+296  ,
+294  ,
+292  ,
+291  ,
+290  ,
+289  ,
+285  ,
+284  ,
+283  ,
+281  ,
+281  ,
+280  ,
+278  ,
+278  ,
+277  ,
+276  ,
+276  ,
+275  ,
+273  ,
+273  ,
+273  ,
+272  ,
+271  ,
+270  ,
+270  ,
+268  ,
+268  ,
+268  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+267  ,
+269  ,
+269  ,
+269  ,
+270  ,
+270  ,
+272  ,
+272  ,
+272  ,
+273  ,
+273  ,
+274  ,
+276  ,
+276  ,
+277  ,
+277  ,
+278  ,
+280  ,
+280  ,
+281  ,
+283  ,
+283  ,
+284  ,
+285  ,
+286  ,
+287  ,
+288  ,
+289  ,
+290  ,
+291  ,
+292  ,
+292  ,
+293  ,
+294  ,
+294  ,
+295  ,
+296  ,
+297  ,
+298  ,
+298  ,
+299  ,
+299  ,
+302  ,
+303  ,
+304  ,
+305  ,
+306  ,
+306  ,
+307  ,
+308  ,
+310  ,
+311  ,
+311  ,
+311  ,
+312  ,
+313  ,
+314  ,
+314  ,
+315  ,
+316  ,
+317  ,
+317  ,
+317  ,
+318  ,
+318  ,
+319  ,
+319  ,
+321  ,
+320  ,
+322  ,
+324  ,
+323  ,
+325  ,
+326  ,
+326  ,
+326  ,
+326  ,
+327  ,
+327  ,
+328  ,
+328  ,
+328  ,
+327  ,
+328  ,
+329  ,
+329  ,
+329  ,
+328  ,
+328  ,
+328  ,
+327  ,
+327  ,
+327  ,
+327  ,
+327  ,
+327  ,
+326  ,
+326  ,
+326  ,
+325  ,
+325  ,
+324  ,
+323  ,
+322  ,
+321  ,
+320  ,
+321  ,
+320  ,
+319  ,
+318  ,
+317  ,
+316  ,
+315  ,
+315  ,
+315  ,
+314  ,
+312  ,
+311  ,
+310  ,
+310  ,
+308  ,
+307  ,
+306  ,
+304  ,
+303  ,
+302  ,
+301  ,
+300  ,
+300  ,
+298  ,
+297  ,
+297  ,
+296  ,
+295  ,
+294  ,
+293  ,
+293  ,
+291  ,
+291  ,
+290  ,
+288  ,
+287  ,
+287  ,
+288  ,
+288  ,
+286  ,
+286  ,
+286  ,
+284  ,
+284  ,
+284  ,
+283  ,
+283  ,
+284  ,
+283  ,
+284  ,
+284  ,
+285  ,
+286  ,
+286  ,
+287  ,
+288  ,
+288  ,
+289  ,
+290  ,
+292  ,
+293  ,
+295  ,
+296  ,
+298  ,
+299  ,
+302  ,
+304  ,
+306  ,
+309  ,
+312  ,
+314  ,
+317  ,
+321  ,
+325  ,
+330  ,
+336  ,
+345  ,
+354  ,
+364  ,
+375  ,
+383  ,
+396  ,
+
+kalix constant kalix
+
+create kaliy
+419  ,
+418  ,
+416  ,
+413  ,
+410  ,
+409  ,
+406  ,
+403  ,
+400  ,
+397  ,
+395  ,
+391  ,
+389  ,
+386  ,
+384  ,
+381  ,
+378  ,
+377  ,
+374  ,
+371  ,
+369  ,
+367  ,
+364  ,
+364  ,
+361  ,
+358  ,
+357  ,
+354  ,
+354  ,
+352  ,
+349  ,
+348  ,
+347  ,
+345  ,
+344  ,
+341  ,
+340  ,
+338  ,
+337  ,
+336  ,
+334  ,
+333  ,
+332  ,
+330  ,
+330  ,
+329  ,
+328  ,
+328  ,
+326  ,
+325  ,
+325  ,
+322  ,
+322  ,
+321  ,
+321  ,
+319  ,
+319  ,
+318  ,
+318  ,
+318  ,
+317  ,
+317  ,
+317  ,
+317  ,
+317  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+316  ,
+315  ,
+315  ,
+317  ,
+317  ,
+317  ,
+317  ,
+317  ,
+318  ,
+318  ,
+318  ,
+319  ,
+319  ,
+321  ,
+322  ,
+322  ,
+323  ,
+323  ,
+324  ,
+324  ,
+326  ,
+326  ,
+327  ,
+327  ,
+328  ,
+328  ,
+329  ,
+331  ,
+331  ,
+332  ,
+333  ,
+333  ,
+334  ,
+334  ,
+335  ,
+336  ,
+337  ,
+337  ,
+339  ,
+340  ,
+340  ,
+342  ,
+343  ,
+343  ,
+344  ,
+345  ,
+345  ,
+346  ,
+346  ,
+346  ,
+348  ,
+348  ,
+349  ,
+350  ,
+350  ,
+351  ,
+351  ,
+352  ,
+352  ,
+352  ,
+353  ,
+353  ,
+354  ,
+353  ,
+353  ,
+353  ,
+355  ,
+354  ,
+353  ,
+353  ,
+353  ,
+353  ,
+353  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+354  ,
+352  ,
+352  ,
+352  ,
+350  ,
+350  ,
+350  ,
+350  ,
+350  ,
+349  ,
+348  ,
+348  ,
+345  ,
+345  ,
+345  ,
+344  ,
+344  ,
+343  ,
+341  ,
+340  ,
+340  ,
+339  ,
+339  ,
+337  ,
+336  ,
+335  ,
+335  ,
+334  ,
+332  ,
+331  ,
+330  ,
+330  ,
+328  ,
+327  ,
+326  ,
+325  ,
+324  ,
+323  ,
+322  ,
+321  ,
+319  ,
+318  ,
+317  ,
+316  ,
+315  ,
+314  ,
+313  ,
+311  ,
+310  ,
+310  ,
+309  ,
+307  ,
+307  ,
+306  ,
+305  ,
+304  ,
+303  ,
+303  ,
+302  ,
+301  ,
+300  ,
+300  ,
+300  ,
+298  ,
+298  ,
+298  ,
+298  ,
+297  ,
+298  ,
+298  ,
+297  ,
+297  ,
+298  ,
+298  ,
+298  ,
+298  ,
+299  ,
+299  ,
+300  ,
+300  ,
+302  ,
+303  ,
+304  ,
+305  ,
+306  ,
+308  ,
+310  ,
+311  ,
+313  ,
+314  ,
+316  ,
+318  ,
+320  ,
+322  ,
+324  ,
+327  ,
+331  ,
+334  ,
+336  ,
+339  ,
+341  ,
+344  ,
+
+kaliy constant kaliy
+
+\ -------------------------------------------------------------
+\  Primitiven zur Anzeige von Pixeln
+\ -------------------------------------------------------------
+
+: full? ( -- ? ) fifo-status io@ 1 and 0<> ;
+: idle? ( -- ? ) fifo-status io@ 2 and 0<> ;
+
+: reset-underflow ( -- ) 0 fifo-status io! ;
+: underflow? ( -- ? ) fifo-status io@ 4 and 0<> ;
+
+  \ Bestimmung der Frequenzwerte:
+  \
+  \ Anfang des Bereiches:  70e6/400e6*2^32 =  751619276.80000
+  \ Ende   des Bereiches:  80e6/400e6*2^32 =  858993459.20000
+
+  \ Offset, um 70 MHz für Koordinate 0 zu erreichen: 751619277.
+
+  \ Möchte nun gerne den Skalierfaktor bestimmen, um bei maximaler Koordinate den Vollausschlag zu erreichen.
+  \ (858993459.20000 - 751619276.80000) / 32767 = 3276.9
+
+  \ Skalierung, um 80 MHz für Koordinate 32767 zu erreichen: 3277
+
+: kalibration ( -- )
+
+  751619277. $0230 ( freq-ch0-high ) io! $0220 ( freq-ch0-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.
+  751619277. $0250 ( freq-ch1-high ) io! $0240 ( freq-ch1-low ) io!  \ Offset, um 70 MHz für Koordinate 0 zu erreichen.
+
+    0 2nd-update io! \ Keinen zusätzlichen Update-Puls, Position 0 fällt mit dem normalen Update-Puls zusammen.
+ \ 22 2nd-update io! \ Einen weiteren Updatepuls nachdem die X-Daten übertragen worden sind.
+;
+
+: putpixel-32768 ( x y -- )
+
+  [ $6024 , ] \ "dup >r" in einem Opcode
+  3277 [ $7511 , ] freq1high io!  \ "2dup um* nip" in einem Opcode
+         *         freq1low  io!
+
+  dup
+  3277 [ $7511 , ] freq0high io!
+         *         freq0low  io!
+
+  \ Trick: LSB der Adresse wird bei @ und ! ignoriert.
+
+          6 rshift kalix + @ amplitude0 ( io! ) [ $6B4F , ] \ "io! r>" in einem Opcode
+  ( r> )  6 rshift kaliy + @
+
+  \ Den Pixel eventuell mehrfach zeichnen, um Zeit fürs Rechnen zu gewinnen:
+
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 3.52 us
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 2.64 us
+\ begin fifo-status io@ 1 and while repeat dup amplitude1 io! \ 1.76 us
+  begin fifo-status io@ 1 and while repeat     amplitude1 io! \ 0.88 us
+;
+
+: blanking ( -- )
+
+  0 freq1low  io!
+  0 freq1high io!
+
+  0 freq0low  io!
+  0 freq0high io!
+
+  0 amplitude0 io!
+
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+  begin fifo-status io@ 1 and while repeat 0 amplitude1 io!
+;
+
+\ -------------------------------------------------------------
+\  Bresenham line
+\ -------------------------------------------------------------
+
+0 variable line-sx   0 variable line-sy
+0 variable line-dx   0 variable line-dy
+
+7 constant distance
+
+: line ( x0 y0 x1 y1 -- )
+
+  >r swap >r ( x0 x1 R: y1 y0 )
+
+  >r dup r> -
+    dup 0 < not 1 or distance lshift  line-sx !
+  abs           line-dx !
+
+  ( x0 R: x1 x0 ) distance lshift
+
+  r> r> ( x0 y0 y1 )
+
+  >r dup r> -
+    dup 0 < not 1 or distance lshift  line-sy !
+  abs invert 1+ line-dy !
+
+  ( x0 y0 ) distance lshift
+
+  line-dx @ line-dy @
+  over over invert 1+ max >r ( x0 y0 dx dy R: steps )
+            +                ( x0 y0 err   R: steps )
+
+
+  begin
+    >r
+    over over putpixel-32768
+    r>
+    r@
+  while
+    r> 1- >r
+
+    ( x y line-err R: steps )
+
+    ( dup 2* ) [ $6A11 , ]  >r
+    ( x y line-err R: steps 2*line-err )
+
+    line-dy @ dup r@ <  ( x y line-err dy flag R: steps 2*line-err )
+                        if + >r swap line-sx @ + swap r> else drop then
+    line-dx @ r> over < ( x y line-err dx flag R: steps 2*line-err )
+                        if + >r      line-sy @ +      r> else drop then
+  repeat
+
+  ( x y line-err R: steps )
+
+  ( drop rdrop ) [ $610F , ] \ "drop rdrop" in einem Opcode
+  2drop
+;
+
+\ -------------------------------------------------------------
+\  Minsky circle
+\ -------------------------------------------------------------
+
+\ 0 variable circle-xm
+  0 variable circle-ym
+
+6 constant schubweite
+
+: minsky-circle ( xm ym r -- )
+
+ swap circle-ym ! ( xm r )
+ swap >r ( r R: xm )
+ 0 swap ( 0 r R: xm )
+
+  begin
+
+    over >r  \ Vorzeichenwechselerkennung vorbereiten
+
+  ( x y -- x'' y' )
+  swap over schubweite 1+ arshift + swap \ x'  = x  + y  >>> c+1
+       over schubweite    arshift -      \ y'  = y  - x' >>> c
+  swap over schubweite 1+ arshift + swap \ x'' = x' + y' >>> c+1
+
+    over r@ xor r> and 0 < not \ Wechsel von negativ auf positiv erkennen
+
+  while
+    over r@ + over circle-ym @ + putpixel-32768 \ Aktuelle Koordinaten anzeigen
+  repeat
+
+  rdrop 2drop
+;
+
+\ -------------------------------------------------------------
+\  Ein paar Kritzeleien
+\ -------------------------------------------------------------
+
+: rahmen ( -- ) \ Den gesamten Zeichenbereich umranden, um die Skalierung im XY-Modus einstellen zu können
+    0   0    0 255 line
+    0 255  255 255 line
+  255 255  255   0 line
+  255   0    0   0 line
+;
+
+\ -------------------------------------------------------------
+\  Die Painting-Funktion für PRIMUS
+\ -------------------------------------------------------------
+
+\ Integer-Arcsin-Tabelle mit Matlab/GNU Octave bestimmen:
+\ format bank
+\ round((2^15-1)*asin(transpose(linspace(-1, 1, 227)))/(pi/2))
+
+227 constant modulations-punkte \ Die Zahl der Punkte zu je 0.88 us bestimmt die Modulationsfrequenz
+                                \ Für 5 kHz: (1/5e3)/0.88e-6 = 227.27
+create modulations-tabelle
+
+  -32767 ,
+  -29990 ,
+  -28836 ,
+  -27950 ,
+  -27200 ,
+  -26538 ,
+  -25939 ,
+  -25386 ,
+  -24871 ,
+  -24385 ,
+  -23925 ,
+  -23486 ,
+  -23066 ,
+  -22662 ,
+  -22273 ,
+  -21896 ,
+  -21531 ,
+  -21176 ,
+  -20831 ,
+  -20494 ,
+  -20165 ,
+  -19844 ,
+  -19529 ,
+  -19221 ,
+  -18918 ,
+  -18622 ,
+  -18330 ,
+  -18043 ,
+  -17761 ,
+  -17483 ,
+  -17209 ,
+  -16938 ,
+  -16672 ,
+  -16409 ,
+  -16149 ,
+  -15892 ,
+  -15639 ,
+  -15388 ,
+  -15140 ,
+  -14894 ,
+  -14651 ,
+  -14411 ,
+  -14172 ,
+  -13936 ,
+  -13702 ,
+  -13470 ,
+  -13240 ,
+  -13011 ,
+  -12785 ,
+  -12560 ,
+  -12337 ,
+  -12115 ,
+  -11895 ,
+  -11676 ,
+  -11459 ,
+  -11244 ,
+  -11029 ,
+  -10816 ,
+  -10604 ,
+  -10393 ,
+  -10184 ,
+   -9975 ,
+   -9768 ,
+   -9561 ,
+   -9356 ,
+   -9152 ,
+   -8948 ,
+   -8746 ,
+   -8544 ,
+   -8343 ,
+   -8143 ,
+   -7944 ,
+   -7745 ,
+   -7548 ,
+   -7351 ,
+   -7154 ,
+   -6959 ,
+   -6764 ,
+   -6569 ,
+   -6375 ,
+   -6182 ,
+   -5989 ,
+   -5797 ,
+   -5605 ,
+   -5414 ,
+   -5223 ,
+   -5033 ,
+   -4843 ,
+   -4654 ,
+   -4464 ,
+   -4276 ,
+   -4087 ,
+   -3899 ,
+   -3712 ,
+   -3524 ,
+   -3337 ,
+   -3150 ,
+   -2964 ,
+   -2777 ,
+   -2591 ,
+   -2405 ,
+   -2219 ,
+   -2034 ,
+   -1848 ,
+   -1663 ,
+   -1478 ,
+   -1293 ,
+   -1108 ,
+    -923 ,
+    -739 ,
+    -554 ,
+    -369 ,
+    -185 ,
+       0 ,
+     185 ,
+     369 ,
+     554 ,
+     739 ,
+     923 ,
+    1108 ,
+    1293 ,
+    1478 ,
+    1663 ,
+    1848 ,
+    2034 ,
+    2219 ,
+    2405 ,
+    2591 ,
+    2777 ,
+    2964 ,
+    3150 ,
+    3337 ,
+    3524 ,
+    3712 ,
+    3899 ,
+    4087 ,
+    4276 ,
+    4464 ,
+    4654 ,
+    4843 ,
+    5033 ,
+    5223 ,
+    5414 ,
+    5605 ,
+    5797 ,
+    5989 ,
+    6182 ,
+    6375 ,
+    6569 ,
+    6764 ,
+    6959 ,
+    7154 ,
+    7351 ,
+    7548 ,
+    7745 ,
+    7944 ,
+    8143 ,
+    8343 ,
+    8544 ,
+    8746 ,
+    8948 ,
+    9152 ,
+    9356 ,
+    9561 ,
+    9768 ,
+    9975 ,
+   10184 ,
+   10393 ,
+   10604 ,
+   10816 ,
+   11029 ,
+   11244 ,
+   11459 ,
+   11676 ,
+   11895 ,
+   12115 ,
+   12337 ,
+   12560 ,
+   12785 ,
+   13011 ,
+   13240 ,
+   13470 ,
+   13702 ,
+   13936 ,
+   14172 ,
+   14411 ,
+   14651 ,
+   14894 ,
+   15140 ,
+   15388 ,
+   15639 ,
+   15892 ,
+   16149 ,
+   16409 ,
+   16672 ,
+   16938 ,
+   17209 ,
+   17483 ,
+   17761 ,
+   18043 ,
+   18330 ,
+   18622 ,
+   18918 ,
+   19221 ,
+   19529 ,
+   19844 ,
+   20165 ,
+   20494 ,
+   20831 ,
+   21176 ,
+   21531 ,
+   21896 ,
+   22273 ,
+   22662 ,
+   23066 ,
+   23486 ,
+   23925 ,
+   24385 ,
+   24871 ,
+   25386 ,
+   25939 ,
+   26538 ,
+   27200 ,
+   27950 ,
+   28836 ,
+   29990 ,
+   32767 ,
+
+\ Diese Werte müssen im Bereich +-(2^15 - 1), also -32767 und +32767 liegen.
+
+\ Der letzte Wert in der Tabelle, wird weiterverwendet, wenn das Argument zu groß wird.
+\ In diesem Falle also 32767 außerhalb von [0, modulations-punkte-1]
+
+: modulation ( u -- n ) modulations-punkte 1- umin 2* modulations-tabelle + @ ; 1 foldable
+
+\ Integer-Exponential-Einhüllende-Tabelle mit Matlab/GNU Octave bestimmen:
+\ format bank
+\ floor(exp(-208*transpose(linspace(0, 0.05, 250)))*(2^15-1))
+
+\ Gewünscht: Abfall der Einhüllenden auf 0 bei 0.05 s.
+\ Das geschieht in 0.05/(57*3.52e-6) = 249.20 Modulationsperioden.
+\ Benötige also mindestens so viele Punkte für die Einhüllende.
+
+250 constant einhüllende-punkte \ Die Zahl der Punkte bestimmt die Dauer der Einhüllenden
+                                 \ in Modulationsperioden, hier 57*3.52e-6 = 2.0064e-04 s
+create einhüllende-tabelle
+
+   32767 ,
+   31426 ,
+   30141 ,
+   28908 ,
+   27725 ,
+   26591 ,
+   25503 ,
+   24460 ,
+   23459 ,
+   22500 ,
+   21579 ,
+   20696 ,
+   19850 ,
+   19038 ,
+   18259 ,
+   17512 ,
+   16796 ,
+   16109 ,
+   15450 ,
+   14818 ,
+   14211 ,
+   13630 ,
+   13072 ,
+   12538 ,
+   12025 ,
+   11533 ,
+   11061 ,
+   10609 ,
+   10175 ,
+    9758 ,
+    9359 ,
+    8976 ,
+    8609 ,
+    8257 ,
+    7919 ,
+    7595 ,
+    7284 ,
+    6986 ,
+    6701 ,
+    6426 ,
+    6164 ,
+    5911 ,
+    5670 ,
+    5438 ,
+    5215 ,
+    5002 ,
+    4797 ,
+    4601 ,
+    4413 ,
+    4232 ,
+    4059 ,
+    3893 ,
+    3734 ,
+    3581 ,
+    3434 ,
+    3294 ,
+    3159 ,
+    3030 ,
+    2906 ,
+    2787 ,
+    2673 ,
+    2564 ,
+    2459 ,
+    2358 ,
+    2262 ,
+    2169 ,
+    2080 ,
+    1995 ,
+    1914 ,
+    1835 ,
+    1760 ,
+    1688 ,
+    1619 ,
+    1553 ,
+    1489 ,
+    1428 ,
+    1370 ,
+    1314 ,
+    1260 ,
+    1209 ,
+    1159 ,
+    1112 ,
+    1066 ,
+    1023 ,
+     981 ,
+     941 ,
+     902 ,
+     865 ,
+     830 ,
+     796 ,
+     763 ,
+     732 ,
+     702 ,
+     673 ,
+     646 ,
+     619 ,
+     594 ,
+     570 ,
+     546 ,
+     524 ,
+     502 ,
+     482 ,
+     462 ,
+     443 ,
+     425 ,
+     408 ,
+     391 ,
+     375 ,
+     360 ,
+     345 ,
+     331 ,
+     317 ,
+     304 ,
+     292 ,
+     280 ,
+     268 ,
+     257 ,
+     247 ,
+     237 ,
+     227 ,
+     218 ,
+     209 ,
+     200 ,
+     192 ,
+     184 ,
+     177 ,
+     169 ,
+     162 ,
+     156 ,
+     149 ,
+     143 ,
+     137 ,
+     132 ,
+     126 ,
+     121 ,
+     116 ,
+     111 ,
+     107 ,
+     102 ,
+      98 ,
+      94 ,
+      90 ,
+      87 ,
+      83 ,
+      80 ,
+      76 ,
+      73 ,
+      70 ,
+      67 ,
+      64 ,
+      62 ,
+      59 ,
+      57 ,
+      54 ,
+      52 ,
+      50 ,
+      48 ,
+      46 ,
+      44 ,
+      42 ,
+      41 ,
+      39 ,
+      37 ,
+      36 ,
+      34 ,
+      33 ,
+      31 ,
+      30 ,
+      29 ,
+      28 ,
+      27 ,
+      25 ,
+      24 ,
+      23 ,
+      22 ,
+      21 ,
+      21 ,
+      20 ,
+      19 ,
+      18 ,
+      17 ,
+      17 ,
+      16 ,
+      15 ,
+      15 ,
+      14 ,
+      13 ,
+      13 ,
+      12 ,
+      12 ,
+      11 ,
+      11 ,
+      10 ,
+      10 ,
+       9 ,
+       9 ,
+       9 ,
+       8 ,
+       8 ,
+       8 ,
+       7 ,
+       7 ,
+       7 ,
+       6 ,
+       6 ,
+       6 ,
+       6 ,
+       5 ,
+       5 ,
+       5 ,
+       5 ,
+       4 ,
+       4 ,
+       4 ,
+       4 ,
+       4 ,
+       3 ,
+       3 ,
+       3 ,
+       3 ,
+       3 ,
+       3 ,
+       3 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       2 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       1 ,
+       0 ,
+
+\ Diese Funktion muss bei 32767 (Vollausschlag) beginnen und mindestens auf 2 abfallen.
+\ Auf Grund der Vorzeichenbits und der Integer-Multiplikation ergibt sich erst
+\ ab einer Einhüllenden von 3 ein Modulationshub am Ausgang:
+
+\ 32767 1 m* nip . 0  ok.
+\ 32767 2 m* nip . 0  ok.
+\ 32767 3 m* nip . 1  ok.
+\ 32767 32767 m* nip . 16383  ok.
+
+\ Der letzte Wert in der Tabelle, wird weiterverwendet, wenn das Argument zu groß wird.
+\ In diesem Falle also 0 außerhalb von [0, einhüllende-punkte-1]
+
+: einhüllende ( u -- n ) einhüllende-punkte 1- umin 2* einhüllende-tabelle + @ ; 1 foldable
+
+\ -------------------------------------------------------------
+\  Animationsschleife
+\ -------------------------------------------------------------
+
+\ Koordinaten laufen mit der aktuellen Skalierung von 0 bis 32767
+
+: kadinsky ( -- )  \ Für die Hardware-Demo
+
+  blanking \ Strahl ausschalten
+  kalibration \ Konfiguration für den Frequenzbereich laden
+  reset-underflow \ Zu-langsam-Pixel-nachgelegt-Erkennung zurücksetzen
+
+  begin
+
+    modulations-punkte
+    begin
+      1-
+      dup  128 *
+      over
+      ( modulation ) 2* modulations-tabelle + @
+      2/ 16384 +
+      putpixel-32768
+    dup 0 = until
+    drop
+
+  esc? until
+
+  blanking \ Strahl ausschalten
+  underflow? if ." Underflow - Zu langsam gezeichnet" cr then
+  begin idle? until \ Ende des Zeichnens abwarten
+
+  depth . \ Prüfen, ob überschüssige Werte auf dem Stack liegen geblieben sind.
+           \ Muss Null sein, sonst ist ein Fehler im Quelltext.
+;
+
+\ ' kadinsky init !  \ Fürs Einkomplieren und loslegen beim Einschalten
+    kadinsky         \ Fürs manuelle Nachladen und Ausprobieren

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+./compilenucleus
+
+mkdir -p Zeichnungen
+rm -f Zeichnungen/*
+
+cat asteroids.txt emulatorstopp.txt | ./VKadinsky $1 > Zeichnungen/Simulationslog.txt
+
+cat Zeichnungen/Simulationslog.txt
+
+mv grafiklog.txt Zeichnungen
+mv ddslog.txt Zeichnungen
+mv frame-*.dat Zeichnungen
+cp malermeister Zeichnungen
+cp amplitude.plt Zeichnungen
+cd Zeichnungen
+for i in *.dat; do ./malermeister "$i"; gnuplot "$i".plt; done
+gnuplot amplitude.plt
+cd ..
+

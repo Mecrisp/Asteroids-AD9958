@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./compilenucleus
+
+echo "Run Quartus..."
+
+cd max10
+~/Altera/20.1/quartus/bin/quartus_sh --flow compile Kadinsky.qsf
+cp output_files/*.sof bitstreams
+cp output_files/*.pof bitstreams
+cp output_files/*.svf bitstreams
+cd ..
+
+./tidyup

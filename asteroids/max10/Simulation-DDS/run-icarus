@@ -1,0 +1,6 @@
+#!/bin/sh
+
+iverilog -o test_dds.vvp -s test_dds test_dds.v Kadinsky.v
+vvp *.vvp
+
+

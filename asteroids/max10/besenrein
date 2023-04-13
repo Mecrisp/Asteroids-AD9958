@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm -rf db
+rm -rf incremental_db
+rm -rf output_files
+rm -rf greybox_tmp
+
+rm *.bak

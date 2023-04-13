@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/Altera/19.1/quartus/bin/quartus_pgm flash.cdf
